@@ -9,8 +9,19 @@ class UsersController < ApplicationController
     end
   end
 
+  post "/login" do
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.first_name}-#{@user.last_name}"
+    else
+      redirect "/login"
+    end
+  end
+
   get "/users/:name" do
     if is_logged_in?
+      @user = current_user
       erb :"projects/projects"
     else
       redirect "/login"
