@@ -30,4 +30,13 @@ class UsersController < ApplicationController
   get "/users/:name/edit" do
     erb :"users/show_user"
   end
+
+  get "/logout" do
+    if is_logged_in?
+      session.clear
+      redirect "/login"
+    else
+      redirect "/"
+    end
+  end
 end
