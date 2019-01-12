@@ -12,4 +12,14 @@ class ApplicationController < Sinatra::Base
   get "/" do
     "Hello World!"
   end
+
+  helpers do
+    def is_logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find {|user| user.id == session[:user_id]}
+    end
+  end
 end
