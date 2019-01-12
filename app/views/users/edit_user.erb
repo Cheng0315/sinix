@@ -1,5 +1,5 @@
 <h1>Edit User Info</h1>
-<form action="/signup" method="POST">
+<form action="/users/<%=@user.first_name%>-<%=@user.last_name%>" method="POST">
   <label for="first_name">First Name </label>
   <input type="first_name" name="user[first_name]" id="first_name">
 
