@@ -19,5 +19,9 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find {|user| user.id == session[:user_id]}
     end
+
+    def input_does_not_contain_empty_field(user_input)
+      !user_input.find {|type, input| input == ""}
+    end
   end
 end
