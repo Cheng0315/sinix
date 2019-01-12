@@ -64,6 +64,16 @@ class UsersController < ApplicationController
     end
   end
 
+  patch "/users/:name" do
+    if user_inputs_does_not_contain_empty_field(params[:user])
+      @user = current_user
+      @user.update(params[:user])
+      redirect "/users/#{@user.first_name}-#{@user.last_name}"
+    else
+      redirect "/users/:name/edit"
+    end
+  end
+
   get "/logout" do
     if user_is_logged_in
       session.clear
