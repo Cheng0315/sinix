@@ -23,5 +23,10 @@ class ApplicationController < Sinatra::Base
     def user_inputs_does_not_contain_empty_field(user_input)
       !user_input.find {|type, input| input == ""}
     end
+
+    def url_name_matches_users_full_name(url_name)
+      users_full_name = "#{current_user.first_name}-#{current_user.last_name}"
+      url_name ==  users_full_name
+    end
   end
 end
