@@ -2,19 +2,36 @@ require './config/environment'
 class UsersController < ApplicationController
 
   get "/login" do
-    erb :index
+    if is_logged_in?
+      redirect "/users/#{@user.first_name}-#{@user.last_name}"
+    else
+      erb :index
+    end
   end
 
   get "/users/:name" do
-    erb :"projects/projects"
+    if is_logged_in?
+      erb :"projects/projects"
+    else
+      redirect "/login"
+    end
   end
 
   get "/users/:name/profile" do
-    erb :"users/show_user"
+    if is_logged_in?
+      erb :"users/show_user"
+    else
+      redirect "/login"
+    end
   end
 
   get "/signup" do
-    erb :"users/create_user"
+    if is_logged_in?
+      @user = current_user
+      redirect "/users/#{@user.first_name}-#{@user.last_name}"
+    else
+      erb :"users/create_user"
+    end
   end
 
   post "/signup" do
@@ -28,13 +45,17 @@ class UsersController < ApplicationController
   end
 
   get "/users/:name/edit" do
-    erb :"users/show_user"
+    if is_logged_in?
+      erb :"users/show_user"
+    else
+      redirect "/login"
+    end
   end
 
   get "/logout" do
     if is_logged_in?
       session.clear
-      redirect "/login"
+      redirect "/"
     else
       redirect "/"
     end
