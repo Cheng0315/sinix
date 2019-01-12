@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    def is_logged_in?
+    def user_is_logged_in
       !!session[:user_id]
     end
 
@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
       User.find {|user| user.id == session[:user_id]}
     end
 
-    def input_does_not_contain_empty_field(user_input)
+    def user_inputs_does_not_contain_empty_field(user_input)
       !user_input.find {|type, input| input == ""}
     end
   end
