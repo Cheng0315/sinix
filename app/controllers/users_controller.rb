@@ -71,7 +71,8 @@ class UsersController < ApplicationController
       @user.update(params[:user])
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
-      redirect "/users/:name/edit"
+      @user = current_user
+      redirect "/users/#{@user.first_name}-#{@user.last_name}/edit"
     end
   end
 
