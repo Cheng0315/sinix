@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     erb :index
   end
 
-  get "/user/:name" do
+  get "/users/:name" do
     erb :"projects/projects"
   end
 
-  get "/user/:name/profile" do
+  get "/users/:name/profile" do
     erb :"users/show_user"
   end
 
@@ -21,10 +21,13 @@ class UsersController < ApplicationController
     if input_does_not_contain_empty_field(params[:user])
       @user = User.create(params[:user])
       session[:user_id] = @user.id
-      redirect "/user/#{@user.first_name}-#{@user.last_name}"
+      redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
       redirect "/signup"
     end
   end
 
+  get "/users/:name/edit" do
+    erb :"users/show_user"
+  end
 end
