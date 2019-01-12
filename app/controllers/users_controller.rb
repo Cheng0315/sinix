@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     erb :"projects/projects"
   end
 
+  get "/user/:name/profile" do
+    erb :"users/show_user"
+  end
+
   get "/signup" do
     erb :"users/create_user"
   end
