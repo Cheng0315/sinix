@@ -1,0 +1,15 @@
+<h1>Please enter the name for your project and the names for your models</h1>
+
+<form action="/projects" method="POST">
+
+  <label for="name">Project's Name: </label>
+  <input type="text" name="name" id="name">
+
+  <label for="model_names">Model Names: </label>
+
+  <%@num_of_models.times do |i|%>
+    <input type="text" name="model_names[]" id="model_names" placeholder="Model <%=i%> name">
+  <%end%>
+
+  <input type="submit" value="submit" id="Submit">
+</form>
