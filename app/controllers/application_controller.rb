@@ -28,5 +28,12 @@ class ApplicationController < Sinatra::Base
       users_full_name = "#{current_user.first_name}-#{current_user.last_name}"
       url_name ==  users_full_name
     end
+
+    def add_models_to_project(project, models_hash)
+      models_hash.each_value do |model_name|
+        model = Model.create(name: model_name)
+        project.models << model
+      end
+    end
   end
 end

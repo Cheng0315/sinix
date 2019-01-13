@@ -10,6 +10,12 @@ class ProjectsController < ApplicationController
   end
 
   post "/projects" do
-
+    @project_name = params[:project_name]
+    @models_hash = params[:models]
+    @project = Project.create(name: @project_name)
+    add_models_to_project(@project, @models_hash)
+    erb :'projects/show_project'
   end
+
+
 end
