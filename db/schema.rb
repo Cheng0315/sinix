@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_121518) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "content"
+    t.string "models"
     t.integer "user_id"
     t.integer "project_type_id"
   end

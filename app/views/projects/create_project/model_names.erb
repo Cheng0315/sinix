@@ -3,12 +3,12 @@
 <form action="/projects" method="POST">
 
   <label for="name">Project's Name: </label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="project_name" id="name">
 
   <label for="model_names">Model Names: </label>
 
   <%@num_of_models.times do |i|%>
-    <input type="text" name="model_names[]" id="model_names" placeholder="Model <%=i%> name">
+    <input type="text" name="models[model_<%=i+1%>_name]" id="model_names" placeholder="Model <%=i%> name">
   <%end%>
 
   <input type="submit" value="submit" id="Submit">
