@@ -4,7 +4,7 @@
     <a href="login">app</a>
       <a href="login">controllers</a>
         <a href="login">application_controllers.rb</a>
-        <%=add_app_controllers(@models_hash)%>
+        <%=add_controllers(@models_hash)%>
       models
         <%=add_models(@models_hash)%>
       views
@@ -16,32 +16,28 @@
     db
       migrate
         <%=create_migration_files(@models_hash)%>
-        seeds.rb
+      seeds.rb
     config.ru
     Gemfile
     Rakefile
   <br><br><br><br>
   <!-- View Page  -->
-    controllers
-      class ApplicationController < Sinatra::Base
+              controllers
 
-      end
-    <%@models_hash.each_value do |model_name|%>
-      class <%=capitalize_model_name_with_s_as_last_char(model_name)%>Controller < Application
+class ApplicationController < Sinatra::Base
 
-      end
-    <%end%>
-  models
-    <br>
-    <%@models_hash.each_value do |model_name|%>
-      class <%=capitalize_model_name(model_name)%> < ActiveRecord::Base
-      <br>
-      end
-      <br>
-    <%end%>
-    <br>
+end
 
-  views
+<%=display_controller_classes(@models_hash)%>
+
+
+              models
+
+
+<%=display_model_classes(@models_hash)%>
+
+
+              views
     <br>
     <%@models_hash.each_value do |model_name|%>
       <%=model_name%>s folder<br>

@@ -53,7 +53,7 @@ class ApplicationController < Sinatra::Base
       model_name.downcase
     end
 
-    def add_app_controllers(models_hash)
+    def add_controllers(models_hash)
       controllers = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
@@ -119,6 +119,30 @@ class ApplicationController < Sinatra::Base
 
       migration_files
     end
+
+    def display_controller_classes(models_hash)
+      controller_classes = ""
+
+      models_hash.each_with_index do |model, index|
+        controller_classes += "class #{capitalize_model_name_with_s_as_last_char(model[1])}Controller < Application<br><br>"
+        controller_classes += "end<br><br>"
+      end
+
+      controller_classes
+    end
+
+    def display_model_classes(models_hash)
+      model_classes = ""
+
+      models_hash.each_with_index do |model, index|
+        model_classes += "class #{capitalize_model_name(model[1])} < ActiveRecord::Base<br><br>"
+        model_classes += "end<br><br>"
+      end
+
+      model_classes
+    end
+
+
 
 
 
