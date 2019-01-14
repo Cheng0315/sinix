@@ -1,50 +1,35 @@
-<h1><%=@Project_name%><h1>
-<h3>app</h3>
-<br>
+  <h1><%=@project_name%></h1>
+  <a href="login">app</a><br>
+  <a href="login">controllers</a><br>
+  <a href="login">application_controllers.rb</a><br>
+  <%@models_hash.each_value do |model_name|%>
+        <%=model_name%>s_controller.rb<br>
+  <%end%>
+      models<br>
+  <%@models_hash.each_value do |model_name|%>
+        <%=model_name%>.rb<br>
+  <%end%>
+      views<br>
+  <%@models_hash.each_value do |model_name|%>
+        <%=model_name%>s folder<br>
+        <%=model_name%>s.erb<br>
+        show_<%=model_name%>.erb<br>
+        edit_<%=model_name%>.erb<br>
+  <%end%>
+  index.erb<br>
+  layout.erb<br>
+  config<br>
+    environment.rb<br>
+  db<br>
+  migrate<br>
+  <%id=1%>
+  <%@models_hash.each_value do |model_name|%>
+    00<%=id%>_create_<%=model_name%>s.rb<br>
+    <%id+=1%>
+  <%end%>
+  <a>seeds.rb</a><br>
+  config.ru<br>
+  Gemfile<br>
+  Rakefile<br>
 
-<h3>controllers</h3>
-<h3>application_controllers.rb</h3>
-<%@models_hash.each_value do |model_name|%>
-  <h3>    <%=model_name%>s_controller.rb</h3>
-<%end%>
-<br>
-
-<h3>models</h3>
-<%@models_hash.each_value do |model_name|%>
-  <h3>    <%=model_name%>.rb</h3>
-<%end%>
-<br>
-
-<h3>Views</h3>
-<%@models_hash.each_value do |model_name|%>
-  <h3><%=model_name%>s folder</h3>
-  <h3><%=model_name%>s.erb</h3>
-  <h3>show_<%=model_name%>.erb</h3>
-  <h3>edit_<%=model_name%>.erb</h3><br>
-<%end%>
-<h3>index.erb</h3>
-<h3>layout.erb</h3>
-<br>
-
-<h3>config</h3>
-<h3>environment.rb</h3>
-<br>
-
-<h3>db</h3>
-<h3>migrate</h3>
-
-<%id=1%>
-<%@models_hash.each_value do |model_name|%>
-  <h3>00<%=id%>_create_<%=model_name%>s.rb</h3>
-  <%id+=1%>
-<%end%>
-<h3>seeds.rb</h3>
-<br>
-
-<h3>config.ru</h3>
-<br>
-
-<h3>Gemfile</h3>
-<br>
-
-<h3>Rakefile</h3>
+<!-- View Page  -->
