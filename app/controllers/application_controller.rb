@@ -57,9 +57,9 @@ class ApplicationController < Sinatra::Base
       controllers = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          controllers += model[1] + "s_controller.rb"
+          controllers += "#{model[1]}s_controller.rb"
         else
-          controllers += model[1] + "s_controller.rb<br>        "
+          controllers += "#{model[1]}s_controller.rb<br>        "
         end
       end
       controllers
@@ -67,10 +67,40 @@ class ApplicationController < Sinatra::Base
 
     def add_models(models_hash)
       models = ""
-      models_hash.each_value do |model_name|
-        models += model_name + ".rb<br>        "
+      models_hash.each_with_index do |model, index|
+        if index == models_hash.length - 1
+          models += "#{model[1]}.rb"
+        else
+          models += "#{model[1]}.rb<br>        "
+        end
       end
       models
     end
+
+    def add_views_folders_and_files(models_hash)
+      views = ""
+      models_hash.each_with_index do |model, index|
+        if index == 0
+          views += "#{model[1]}s<br>"
+        else
+          views += "        #{model[1]}s<br>"
+        end
+
+        if index == models_hash.length - 1
+          views += "          #{model[1]}s.erb<br>"
+          views += "          create_#{model[1]}.erb<br>"
+          views += "          edit_#{model[1]}.erb<br>"
+          views += "          show_#{model[1]}.erb"
+        else
+          views += "          #{model[1]}s.erb<br>"
+          views += "          create_#{model[1]}.erb<br>"
+          views += "          edit_#{model[1]}.erb<br>"
+          views += "          show_#{model[1]}.erb<br>"
+        end
+      end
+      views
+    end
+
+
   end
 end

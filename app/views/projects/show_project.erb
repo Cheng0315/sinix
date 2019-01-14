@@ -8,12 +8,7 @@
       models
         <%=add_models(@models_hash)%>
       views
-      <%@models_hash.each_value do |model_name|%>
-        <%=model_name%>s folder
-        <%=model_name%>s.erb
-        create_<%=model_name%>.erb
-        edit_<%=model_name%>.erb
-        show_<%=model_name%>.erb<%end%>
+        <%=add_views_folders_and_files(@models_hash)%>
     index.erb
     layout.erb
     config
