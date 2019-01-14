@@ -55,8 +55,12 @@ class ApplicationController < Sinatra::Base
 
     def add_app_controllers(models_hash)
       controllers = ""
-      models_hash.each_value do |model_name|
-        controllers += model_name + "s_controller.rb<br>        "
+      models_hash.each_with_index do |model, index|
+        if index == models_hash.length - 1
+          controllers += model[1] + "s_controller.rb"
+        else
+          controllers += model[1] + "s_controller.rb<br>        "
+        end
       end
       controllers
     end
