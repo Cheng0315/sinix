@@ -3,7 +3,7 @@
   <%=@project_name%>
     <a href="login">app</a>
       <a href="login">controllers</a>
-        <a href="login">application_controllers.rb</a>
+        application_controllers.rb
         <%=add_controllers(@models_hash)%>
       models
         <%=add_models(@models_hash)%>
@@ -16,7 +16,6 @@
     db
       migrate
         <%=create_migration_files(@models_hash)%>
-      seeds.rb
     config.ru
     Gemfile
     Rakefile
@@ -33,73 +32,85 @@ end
 
               models
 
-
 <%=display_model_classes(@models_hash)%>
 
 
               views
-    <br>
-    <%@models_hash.each_value do |model_name|%>
-      <%=model_name%>s folder<br>
-      <%=model_name%>s.erb<br>
-      add html and erb code for viewing the <%=model_name%>s here if you implement it in your project<br><br>
-      create_<%=model_name%>.erb<br>
-      add html and erb code for create_<%=model_name%> here <br><br>
-      edit_<%=model_name%>.erb<br>
-      add html and erb code for edit_<%=model_name%> here <br><br>
-      show_<%=model_name%>.erb<br>
-      add html and erb code for show_<%=model_name%> here <br><br>
-    <%end%>
-    <br>
-    <br>
 
-    index <br>
-      add html and erb code for your index/home page goes here <br><br>
+add your html/erb code in your erb files inside your views folder
+add 'index.erb' on the first layer of your views folder
+add 'layout.erb' on the first layer of your views folder
 
-    layout<br>
-    <pre>
-    &lt;DOCTYPE html&gt;
-    &lt;html&gt;
-      &lt;head&gt;
-        &lt;title&gt;Sinix&lt;/title&gt;
-      &lt;/head&gt;
+layout.erb
+<pre>
+&lt;DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Sinix&lt;/title&gt;
+  &lt;/head&gt;
 
-      &lt;body&gt;
-        <%%= yield %>
-      &lt;/body&gt;
-    &lt;/html&gt;
+  &lt;body&gt;
+    <%%= yield %>
+  &lt;/body&gt;
+&lt;/html&gt;
   </pre>
+              config/environment.rb
 
-    config<br>
-      environment.rb<br>
-      require 'bundler/setup'
-      Bundler.require
+require 'bundler/setup'
+Bundler.require
 
-      ActiveRecord::Base.establish_connection(
-        :adapter => "sqlite3",
-        :database => "db/development.sqlite"
-      )
+ActiveRecord::Base.establish_connection(
+  :adapter => "sqlite3",
+  :database => "db/development.sqlite"
+)
 
-      require_all 'app'<br>
+require_all 'app'
 
-    db<br>
-    migrate<br>
 
-    <%@models_hash.each_value do |model_name|%>
-      create_<%=model_name%>s.rb<br>
-      class Create<%=capitalize_model_name_with_s_as_last_char(model_name)%> < ActiveRecord::Migration[5.1]<br>
-        def change<br>
-          create_table :<%=table_name(model_name)%> do |t|<br>
-            <br>
-          end<br>
-        end<br>
-      end<br>
-    <%end%>
-    <a>seeds.rb</a><br>
 
-    config.ru<br>
-    Gemfile<br>
-    Rakefile<br>
+              db/migrate
 
-  </code>
-  </pre>
+<%=display_migration_files(@models_hash)%>
+
+              config.ru
+
+require './config/environment'
+
+if ActiveRecord::Migrator.needs_migration?
+  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+end
+
+use Rack::MethodOverride
+<%=use_controllers(@models_hash)%>
+run ApplicationController
+
+
+
+              Gemfile
+
+source "https://rubygems.org"
+
+gem 'sinatra'
+gem 'activerecord', ">= 4.2.7.1", :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3'
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+gem 'bcrypt'
+gem 'tux'
+gem 'rack-flash3'
+
+
+
+              Rakefile
+
+require_relative './config/environment'
+require 'sinatra/activerecord/rake'
+
+require "bundler/gem_tasks"
+task :default => :spec
+</code>
+</pre>

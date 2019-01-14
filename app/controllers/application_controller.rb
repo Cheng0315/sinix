@@ -57,9 +57,9 @@ class ApplicationController < Sinatra::Base
       controllers = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          controllers += "<a href='/projects/new'>#{model[1]}s_controller.rb</a>"
+          controllers += "#{model[1]}s_controller.rb"
         else
-          controllers += "<a href='/projects/new'>#{model[1]}s_controller.rb</a><br>        "
+          controllers += "#{model[1]}s_controller.rb</a><br>        "
         end
       end
       controllers
@@ -142,9 +142,29 @@ class ApplicationController < Sinatra::Base
       model_classes
     end
 
+    def display_migration_files(models_hash)
+      migration_files = ""
 
+      models_hash.each_with_index do |model, index|
+        migration_files += "class Create#{capitalize_model_name_with_s_as_last_char(model[1])} < ActiveRecord::Migration<br>"
+        migration_files += "  def change<br>"
+        migration_files += "    create_table :#{table_name(model[1])}s do |t|<br><br>"
+        migration_files += "    end<br>"
+        migration_files += "  end<br>"
+        migration_files += "end<br><br><br>"
+      end
 
+      migration_files
+    end
 
+    def use_controllers(models_hash)
+      controllers = ""
+      models_hash.each_value do |model_name|
+        controllers += "use #{capitalize_model_name_with_s_as_last_char(model_name)}Controller<br>"
+      end
+
+      controllers
+    end
 
   end
 end
