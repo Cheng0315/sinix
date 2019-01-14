@@ -6,6 +6,5 @@ end
 
 use Rack::MethodOverride
 use ProjectsController
-use ProjectTypesController
 use UsersController
 run ApplicationController

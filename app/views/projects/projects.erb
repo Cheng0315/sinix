@@ -1,4 +1,9 @@
 <h1>Hi <%=@user.first_name%></h1>
-<h2>Projects</h2>
+<table>
+  <tr>Project(s)</tr>
+  <tr>Date Created</tr>
+  <%=user_projects(@projects)%>
+
+</table>
 
 <a href="/logout"><h5>Log Out</h5></a>

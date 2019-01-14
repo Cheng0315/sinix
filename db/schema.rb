@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2019_01_13_212934) do
     t.integer "project_id"
   end
 
-  create_table "project_types", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
+    t.string "date_created"
+    t.string "status"
     t.integer "user_id"
     t.integer "project_type_id"
   end
