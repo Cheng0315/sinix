@@ -1,25 +1,33 @@
+
   <h1><%=@project_name%></h1>
   <a href="login">app</a><br>
   <a href="login">controllers</a><br>
+
   <a href="login">application_controllers.rb</a><br>
   <%@models_hash.each_value do |model_name|%>
         <%=model_name%>s_controller.rb<br>
   <%end%>
+
       models<br>
   <%@models_hash.each_value do |model_name|%>
         <%=model_name%>.rb<br>
   <%end%>
+
       views<br>
   <%@models_hash.each_value do |model_name|%>
         <%=model_name%>s folder<br>
         <%=model_name%>s.erb<br>
-        show_<%=model_name%>.erb<br>
+        create_<%=model_name%>.erb<br>
         edit_<%=model_name%>.erb<br>
+        show_<%=model_name%>.erb<br>
   <%end%>
+
   index.erb<br>
   layout.erb<br>
+
   config<br>
     environment.rb<br>
+
   db<br>
   migrate<br>
   <%id=1%>
@@ -28,8 +36,64 @@
     <%id+=1%>
   <%end%>
   <a>seeds.rb</a><br>
+
   config.ru<br>
   Gemfile<br>
   Rakefile<br>
-
+<br><br><br><br>
 <!-- View Page  -->
+controllers
+  <br>
+  class ApplicationController < Sinatra::Base
+  <br>
+  end
+  <br>
+  <%@models_hash.each_value do |model_name|%>
+    class <%=capitalize_model_name_with_s_as_last_char(model_name)%>Controller < Application
+    <br>
+    end
+    <br>
+  <%end%>
+<br>
+
+
+models
+  <br>
+  <%@models_hash.each_value do |model_name|%>
+    class <%=capitalize_model_name(model_name)%> < ActiveRecord::Base
+    <br>
+    end
+    <br>
+  <%end%>
+  <br>
+
+views
+  <br>
+  <%@models_hash.each_value do |model_name|%>
+    <%=model_name%>s folder<br>
+    <%=model_name%>s.erb<br>
+    create_<%=model_name%>.erb<br>
+    edit_<%=model_name%>.erb<br>
+    show_<%=model_name%>.erb<br>
+  <%end%>
+  <br>
+  <br>
+
+  index <br>
+
+  layout<br>
+
+  config<br>
+    environment.rb<br>
+
+  db<br>
+  migrate<br>
+
+  <%@models_hash.each_value do |model_name|%>
+    create_<%=model_name%>s.rb<br>
+  <%end%>
+  <a>seeds.rb</a><br>
+
+  config.ru<br>
+  Gemfile<br>
+  Rakefile<br>

@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
     @models_hash = params[:models]
     @project = Project.create(name: @project_name)
     add_models_to_project(@project, @models_hash)
-    binding.pry
     erb :'projects/show_project'
   end
 

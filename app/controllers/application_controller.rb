@@ -35,5 +35,18 @@ class ApplicationController < Sinatra::Base
         project.models << model
       end
     end
+
+    def capitalize_model_name_with_s_as_last_char(model_name)
+      name = model_name.split.map(&:capitalize).join('')
+      if name[-1] == "s"
+        name
+      else
+        name + "s"
+      end
+    end
+
+    def capitalize_model_name(model_name)
+      name = model_name.split.map(&:capitalize).join('')
+    end
   end
 end
