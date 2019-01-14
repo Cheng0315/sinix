@@ -48,5 +48,25 @@ class ApplicationController < Sinatra::Base
     def capitalize_model_name(model_name)
       name = model_name.split.map(&:capitalize).join('')
     end
+
+    def table_name(model_name)
+      model_name.downcase
+    end
+
+    def add_app_controllers(models_hash)
+      controllers = ""
+      models_hash.each_value do |model_name|
+        controllers += model_name + "s_controller.rb<br>        "
+      end
+      controllers
+    end
+
+    def add_models(models_hash)
+      models = ""
+      models_hash.each_value do |model_name|
+        models += model_name + ".rb<br>        "
+      end
+      models
+    end
   end
 end

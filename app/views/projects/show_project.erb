@@ -1,99 +1,117 @@
+<pre>
+  <code>
+  <%=@project_name%>
+    <a href="login">app</a>
+      <a href="login">controllers</a>
+        <a href="login">application_controllers.rb</a>
+        <%=add_app_controllers(@models_hash)%>
+      models
+        <%=add_models(@models_hash)%>
+      views
+      <%@models_hash.each_value do |model_name|%>
+        <%=model_name%>s folder
+        <%=model_name%>s.erb
+        create_<%=model_name%>.erb
+        edit_<%=model_name%>.erb
+        show_<%=model_name%>.erb<%end%>
+    index.erb
+    layout.erb
+    config
+      environment.rb
+    db
+      migrate <%id=1%>
+      <%@models_hash.each_value do |model_name|%>
+      00<%=id%>_create_<%=model_name%>s.rb
+      <%id+=1%>
+    <%end%>
+    seeds.rb
+    config.ru
+    Gemfile
+    Rakefile
+  <br><br><br><br>
+  <!-- View Page  -->
+    controllers
+      class ApplicationController < Sinatra::Base
 
-  <h1><%=@project_name%></h1>
-  <a href="login">app</a><br>
-  <a href="login">controllers</a><br>
+      end
+    <%@models_hash.each_value do |model_name|%>
+      class <%=capitalize_model_name_with_s_as_last_char(model_name)%>Controller < Application
 
-  <a href="login">application_controllers.rb</a><br>
-  <%@models_hash.each_value do |model_name|%>
-        <%=model_name%>s_controller.rb<br>
-  <%end%>
-
-      models<br>
-  <%@models_hash.each_value do |model_name|%>
-        <%=model_name%>.rb<br>
-  <%end%>
-
-      views<br>
-  <%@models_hash.each_value do |model_name|%>
-        <%=model_name%>s folder<br>
-        <%=model_name%>s.erb<br>
-        create_<%=model_name%>.erb<br>
-        edit_<%=model_name%>.erb<br>
-        show_<%=model_name%>.erb<br>
-  <%end%>
-
-  index.erb<br>
-  layout.erb<br>
-
-  config<br>
-    environment.rb<br>
-
-  db<br>
-  migrate<br>
-  <%id=1%>
-  <%@models_hash.each_value do |model_name|%>
-    00<%=id%>_create_<%=model_name%>s.rb<br>
-    <%id+=1%>
-  <%end%>
-  <a>seeds.rb</a><br>
-
-  config.ru<br>
-  Gemfile<br>
-  Rakefile<br>
-<br><br><br><br>
-<!-- View Page  -->
-controllers
-  <br>
-  class ApplicationController < Sinatra::Base
-  <br>
-  end
-  <br>
-  <%@models_hash.each_value do |model_name|%>
-    class <%=capitalize_model_name_with_s_as_last_char(model_name)%>Controller < Application
+      end
+    <%end%>
+  models
     <br>
-    end
+    <%@models_hash.each_value do |model_name|%>
+      class <%=capitalize_model_name(model_name)%> < ActiveRecord::Base
+      <br>
+      end
+      <br>
+    <%end%>
     <br>
-  <%end%>
-<br>
 
-
-models
-  <br>
-  <%@models_hash.each_value do |model_name|%>
-    class <%=capitalize_model_name(model_name)%> < ActiveRecord::Base
+  views
     <br>
-    end
+    <%@models_hash.each_value do |model_name|%>
+      <%=model_name%>s folder<br>
+      <%=model_name%>s.erb<br>
+      add html and erb code for viewing the <%=model_name%>s here if you implement it in your project<br><br>
+      create_<%=model_name%>.erb<br>
+      add html and erb code for create_<%=model_name%> here <br><br>
+      edit_<%=model_name%>.erb<br>
+      add html and erb code for edit_<%=model_name%> here <br><br>
+      show_<%=model_name%>.erb<br>
+      add html and erb code for show_<%=model_name%> here <br><br>
+    <%end%>
     <br>
-  <%end%>
-  <br>
+    <br>
 
-views
-  <br>
-  <%@models_hash.each_value do |model_name|%>
-    <%=model_name%>s folder<br>
-    <%=model_name%>s.erb<br>
-    create_<%=model_name%>.erb<br>
-    edit_<%=model_name%>.erb<br>
-    show_<%=model_name%>.erb<br>
-  <%end%>
-  <br>
-  <br>
+    index <br>
+      add html and erb code for your index/home page goes here <br><br>
 
-  index <br>
+    layout<br>
+    <pre>
+    &lt;DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Sinix&lt;/title&gt;
+      &lt;/head&gt;
 
-  layout<br>
+      &lt;body&gt;
+        <%%= yield %>
+      &lt;/body&gt;
+    &lt;/html&gt;
+  </pre>
 
-  config<br>
-    environment.rb<br>
+    config<br>
+      environment.rb<br>
+      require 'bundler/setup'
+      Bundler.require
 
-  db<br>
-  migrate<br>
+      ActiveRecord::Base.establish_connection(
+        :adapter => "sqlite3",
+        :database => "db/development.sqlite"
+      )
 
-  <%@models_hash.each_value do |model_name|%>
-    create_<%=model_name%>s.rb<br>
-  <%end%>
-  <a>seeds.rb</a><br>
+      require_all 'app'<br>
 
-  config.ru<br>
-  Gemfile<br>
-  Rakefile<br>
+    db<br>
+    migrate<br>
+
+    <%@models_hash.each_value do |model_name|%>
+      create_<%=model_name%>s.rb<br>
+      class Create<%=capitalize_model_name_with_s_as_last_char(model_name)%> < ActiveRecord::Migration[5.1]<br>
+        def change<br>
+          create_table :<%=table_name(model_name)%> do |t|<br>
+            <br>
+          end<br>
+        end<br>
+      end<br>
+    <%end%>
+    <a>seeds.rb</a><br>
+
+    config.ru<br>
+    Gemfile<br>
+    Rakefile<br>
+
+  </code>
+  </pre>
