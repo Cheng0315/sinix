@@ -14,12 +14,9 @@
     config
       environment.rb
     db
-      migrate <%id=1%>
-      <%@models_hash.each_value do |model_name|%>
-      00<%=id%>_create_<%=model_name%>s.rb
-      <%id+=1%>
-    <%end%>
-    seeds.rb
+      migrate
+        <%=create_migration_files(@models_hash)%>
+        seeds.rb
     config.ru
     Gemfile
     Rakefile

@@ -57,9 +57,9 @@ class ApplicationController < Sinatra::Base
       controllers = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          controllers += "#{model[1]}s_controller.rb"
+          controllers += "<a href='/projects/new'>#{model[1]}s_controller.rb</a>"
         else
-          controllers += "#{model[1]}s_controller.rb<br>        "
+          controllers += "<a href='/projects/new'>#{model[1]}s_controller.rb</a><br>        "
         end
       end
       controllers
@@ -79,11 +79,12 @@ class ApplicationController < Sinatra::Base
 
     def add_views_folders_and_files(models_hash)
       views = ""
+
       models_hash.each_with_index do |model, index|
         if index == 0
-          views += "#{model[1]}s<br>"
+          views += "<a href='/projects/new'>#{model[1]}s</a><br>"
         else
-          views += "        #{model[1]}s<br>"
+          views += "        <a href='/projects/new'>#{model[1]}s</a><br>"
         end
 
         if index == models_hash.length - 1
@@ -98,8 +99,27 @@ class ApplicationController < Sinatra::Base
           views += "          show_#{model[1]}.erb<br>"
         end
       end
+
       views
     end
+
+    def create_migration_files(models_hash)
+      id = 1
+      migration_files = ""
+
+      models_hash.each_with_index do |model, index|
+        if index == models_hash.length - 1
+          migration_files += "00#{id}_create_#{model[1]}s.rb"
+          id += 1
+        else
+          migration_files += "00#{id}_create_#{model[1]}s.rb<br>        "
+          id += 1
+        end
+      end
+
+      migration_files
+    end
+
 
 
   end
