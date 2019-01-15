@@ -1,11 +1,11 @@
-<h1>Please enter the name for your project and the names for your models</h1>
+<h1>Please enter the name for your project and the names of your models.</h1>
 
 <form action="/projects" method="POST">
 
   <label for="name">Project's Name: </label>
   <input type="text" name="project_name" id="name">
 
-  <label for="model_names">Model Names: </label>
+  <label for="model_names">Model Names(in sigular form): </label>
 
   <%@num_of_models.times do |i|%>
     <input type="text" name="models[model_<%=i+1%>_name]" id="model_names" placeholder="Model <%=i+1%> name">

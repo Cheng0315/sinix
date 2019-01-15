@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   post "/projects" do
-    if user_is_logged_in
+    if user_is_logged_in && user_inputs_does_not_contain_empty_field(params[:models]) && params[:project_name] != "" && params[:description] != ""
       @user = current_user
       @date_created = Time.now.strftime('%F')
       @project = Project.create(name: params[:project_name], date_created: @date_created, description: params[:description])
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
       @user.projects << @project
       redirect "/projects/#{@project.id}"
     else
-      redirect "/login"
+      redirect "/projects/new"
     end
   end
 
@@ -57,13 +57,14 @@ class ProjectsController < ApplicationController
   end
 
   patch "/projects/:id" do
-    if user_is_logged_in
-      @project = Project.find {|project| project.id == params[:id].to_i}
+    @project = Project.find {|project| project.id == params[:id].to_i}
+
+    if user_is_logged_in && user_inputs_does_not_contain_empty_field(params[:models]) && params[:project_name] != "" && params[:description] != ""
       @project.update(name: params[:project_name], description: params[:description])
       update_models_name(params[:models])
       redirect "/projects/#{@project.id}"
     else
-      redirect "/login"
+      redirect "/projects/#{@project.id}/edit"
     end
   end
 
