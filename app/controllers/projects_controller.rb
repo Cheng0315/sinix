@@ -67,4 +67,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  delete "/projects/:id/delete" do
+    @project_belongs_to_user = !!current_user.projects.map {|t| t.id}.include?(params[:id].to_i)
+      if user_is_logged_in && @project_belongs_to_user
+        current_user.projects.find(params[:id].to_i).destroy
+        redirect "/projects"
+      else
+        redirect "/login"
+      end
+  end
+
+
+
 end

@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   get "/users/:name/profile" do
     if user_is_logged_in && url_name_matches_users_full_name(params[:name])
+      @user = current_user
       erb :"users/show_user"
     else
       redirect "/login"
