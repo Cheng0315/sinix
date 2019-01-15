@@ -1,17 +1,20 @@
 <h1>Hi <%=@user.first_name%></h1>
-<table>
-  <tr>
-    <th><h3>Project(s)</h3></th>
-    <th><h3>Date Created</h3></th>
-  </tr>
 
-  <%user_projects(@projects).each do |project|%>
-    <tr>
-    <td><h3><%=project.name%></h3></td>
-    <td><h3><%=project.date_created%></h3></td>
-    </tr>
-  <%end%>
+<h2>In progress projects</h2>
 
-</table>
+<div>
+  <ul style="list-style-type: none;">
+    <%Project.all.each do |project|%>
+    <li>
+      <div>
+        <h3><a href="/projects" style="text-decoration:none"><%=project.name%></a></h3>
+      </div>
+      <div>
+        Created on <%=project.date_created%>
+      </div>
+    </li>
+    <%end%>
+  </ul>
+</div>
 
 <a href="/logout"><h5>Log Out</h5></a>

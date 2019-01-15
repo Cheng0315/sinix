@@ -166,11 +166,7 @@ class ApplicationController < Sinatra::Base
       controllers
     end
 
-    def user_projects(projects)
-      user = current_user
-      user_projects = projects.select {|project| project.user_id == user.id}
-      user_projects
-    end
+
 
   end
 end
