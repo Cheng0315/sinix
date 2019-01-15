@@ -36,6 +36,14 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def convert_array_of_model_hashes_to_hash_of_model_names(array_hashes)
+      models_hash = {}
+        array_hashes.each_with_index do |hash, index|
+          models_hash["model_#{index +1}_name"] = hash.name
+        end
+      models_hash
+    end
+
     def capitalize_model_name_with_s_as_last_char(model_name)
       name = model_name.split.map(&:capitalize).join('')
       if name[-1] == "s"

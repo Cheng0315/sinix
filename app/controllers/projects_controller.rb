@@ -18,10 +18,22 @@ class ProjectsController < ApplicationController
       @user = current_user
       @project_name = params[:project_name]
       @models_hash = params[:models]
-      @project = Project.create(name: @project_name, date_created: Time.now.strftime('%F'))
+      @date_created = Time.now.strftime('%F')
+      @project = Project.create(name: @project_name, date_created: @date_created)
       add_models_to_project(@project, @models_hash)
       @user.projects << @project
-      erb :'projects/show_project'
+      redirect :"projects/#{@project_name}"
+    else
+      redirect "/login"
+    end
+  end
+
+  get "/projects/:name" do
+    if user_is_logged_in
+      @project = Project.find {|project| project.name == params[:name]}
+      @models_hash = convert_array_of_model_hashes_to_hash_of_model_names(@project.models)
+      @project_name = @project.name
+      erb :"projects/show_project"
     else
       redirect "/login"
     end
