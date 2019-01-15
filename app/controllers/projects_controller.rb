@@ -16,11 +16,9 @@ class ProjectsController < ApplicationController
   post "/projects" do
     if user_is_logged_in
       @user = current_user
-      @project_name = params[:project_name]
-      @models_hash = params[:models]
       @date_created = Time.now.strftime('%F')
-      @project = Project.create(name: @project_name, date_created: @date_created, description: params[:description])
-      add_models_to_project(@project, @models_hash)
+      @project = Project.create(name: params[:project_name], date_created: @date_created, description: params[:description])
+      add_models_to_project(@project, params[:models])
       @user.projects << @project
       redirect "/projects/#{@project.id}"
     else
