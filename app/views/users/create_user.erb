@@ -1,4 +1,7 @@
 <h2>Sign up and start structuring your next big Sinatra Project</h2>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <form action="/signup" method="POST">
   <label for="first_name">First Name </label>
   <input type="first_name" name="user[first_name]" id="first_name">

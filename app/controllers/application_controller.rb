@@ -21,7 +21,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def user_inputs_does_not_contain_empty_field(user_input)
-      !user_input.find {|type, input| input.strip.empty?}
+      !user_input.find {|type, input| input.scan(/\w/).empty?}
     end
 
     def url_name_matches_user_slug_name(url_name)

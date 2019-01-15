@@ -1,5 +1,10 @@
 <h1>Sinix</h1>
 <h2>Where developers structured their next big Sinatra Project</h2>
+
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+
 <form action="/login" method="POST">
 
   <label for="email">Email </label>
