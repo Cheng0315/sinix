@@ -7,7 +7,7 @@
     <%Project.all.each do |project|%>
     <li>
       <div>
-        <h3><a href="/projects/<%=project.name%>" style="text-decoration:none"><%=project.name%></a></h3>
+        <h3><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h3>
       </div>
       <div>
         Created on <%=project.date_created%>

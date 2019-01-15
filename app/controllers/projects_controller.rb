@@ -28,9 +28,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  get "/projects/:name" do
+  get "/projects/:id" do
     if user_is_logged_in
-      @project = Project.find {|project| project.name == params[:name]}
+      @project = Project.find {|project| project.id == params[:id].to_i}
       @models_hash = convert_array_of_model_hashes_to_hash_of_model_names(@project.models)
       @project_name = @project.name
       erb :"projects/show_project"
@@ -49,5 +49,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-
+  get "/projects/:id/edit" do
+    if user_is_logged_in && !!current_user.projects.map {|project| project.id}.include?(params[:id].to_i)
+      @project = current_user.projects.find(params[:id].to_i)
+      erb :"projects/edit_project"
+    else
+      redirect "/login"
+    end
+  end
 end
