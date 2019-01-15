@@ -1,8 +1,16 @@
 <h1>Hi <%=@user.first_name%></h1>
 <table>
-  <tr>Project(s)</tr>
-  <tr>Date Created</tr>
-  <%=user_projects(@projects)%>
+  <tr>
+    <th><h3>Project(s)</h3></th>
+    <th><h3>Date Created</h3></th>
+  </tr>
+
+  <%user_projects(@projects).each do |project|%>
+    <tr>
+    <td><h3><%=project.name%></h3></td>
+    <td><h3><%=project.date_created%></h3></td>
+    </tr>
+  <%end%>
 
 </table>
 

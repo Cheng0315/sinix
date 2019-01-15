@@ -168,7 +168,8 @@ class ApplicationController < Sinatra::Base
 
     def user_projects(projects)
       user = current_user
-      pi = projects.find {|project| project.user_id == user.id}
+      user_projects = projects.select {|project| project.user_id == user.id}
+      user_projects
     end
 
   end
