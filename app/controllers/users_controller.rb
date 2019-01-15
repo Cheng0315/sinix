@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:name" do
-    if user_is_logged_in && url_name_matches_users_full_name(params[:name])
+    if user_is_logged_in && url_name_matches_user_slug_name(params[:name])
       @user = current_user
       erb :"projects/projects"
     else
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:name/profile" do
-    if user_is_logged_in && url_name_matches_users_full_name(params[:name])
+    if user_is_logged_in && url_name_matches_user_slug_name(params[:name])
       @user = current_user
       erb :"users/show_user"
     else
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:name/edit" do
-    if user_is_logged_in && url_name_matches_users_full_name(params[:name])
+    if user_is_logged_in && url_name_matches_user_slug_name(params[:name])
       @user = current_user
       erb :"users/edit_user"
     else

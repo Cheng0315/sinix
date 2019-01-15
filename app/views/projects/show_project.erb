@@ -1,4 +1,4 @@
-
+<%if project_belongs_to_user(params[:id])%>
 <form action="/projects/<%= @project.id %>/edit" method="get">
   <input type="submit" value="Edit Project" id="Edit Project" name="Edit Project">
 </form>
@@ -6,7 +6,7 @@
   <input type="hidden" value="delete" id="hidden" name="_method">
   <input type="submit" value="Delete Project" id="Delete Project" name="Delete Project">
 </form>
-
+<%end%>
 
 <pre>
   <code>

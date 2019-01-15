@@ -24,9 +24,17 @@ class ApplicationController < Sinatra::Base
       !user_input.find {|type, input| input == ""}
     end
 
-    def url_name_matches_users_full_name(url_name)
+    def url_name_matches_user_slug_name(url_name)
       users_full_name = "#{current_user.first_name}-#{current_user.last_name}"
       url_name ==  users_full_name
+    end
+
+    def project_belongs_to_user(project_id)
+      !!current_user.projects.map {|t| t.id}.include?(project_id.to_i)
+    end
+
+    def project_exists_in_database(project_id)
+      Project.find {|project| project.id == params[:id].to_i} != nil
     end
 
     def add_models_to_project(project, models_hash)

@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id" do
-    if user_is_logged_in && Project.find {|project| project.id == params[:id].to_i} != nil
+    if user_is_logged_in && project_exists_in_database(params[:id])
       @project = Project.find {|project| project.id == params[:id].to_i}
       @models_hash = convert_array_of_model_hashes_to_hash_of_model_names(@project.models)
       @project_name = @project.name
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id/edit" do
-    if user_is_logged_in && !!current_user.projects.map {|project| project.id}.include?(params[:id].to_i)
+    if user_is_logged_in && project_belongs_to_user(params[:id])
       @project = current_user.projects.find(params[:id].to_i)
       erb :"projects/edit_project"
     else
@@ -68,8 +68,7 @@ class ProjectsController < ApplicationController
   end
 
   delete "/projects/:id/delete" do
-    @project_belongs_to_user = !!current_user.projects.map {|t| t.id}.include?(params[:id].to_i)
-      if user_is_logged_in && @project_belongs_to_user
+      if user_is_logged_in && project_belongs_to_user(params[:id])
         current_user.projects.find(params[:id].to_i).destroy
         redirect "/projects"
       else

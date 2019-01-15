@@ -1,6 +1,6 @@
 <h1>Hi <%=@user.first_name%></h1>
 
-<h2>In progress projects</h2>
+<h2>Projects</h2>
 
 <div>
   <ul style="list-style-type: none;">
@@ -13,7 +13,7 @@
         <%=project.description%>
       </div>
       <div>
-        Created on <%=project.date_created%>
+        Date created: <%=project.date_created%>
       </div>
     </li>
     <%end%>
