@@ -1,1 +1,19 @@
-<h1>hi</h1>
+<h1>Edit</h1>
+
+<form action="/projects/<%=@project.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+  <label for="name">Project's Name: </label>
+  <input type="text" name="project_name" id="name" value="<%=@project.name%>">
+
+  <label for="model_names">Model Names: </label>
+
+  <%@project.models.each_with_index do |model, i|%>
+    <input type="text" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
+  <%end%>
+
+  <label for="description">Description: </label>
+  <input type="text" name="description" id="description" value="<%=@project.description%>">
+
+  <input type="submit" value="submit" id="Submit">
+</form>

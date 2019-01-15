@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
       @project = Project.create(name: @project_name, date_created: @date_created, description: params[:description])
       add_models_to_project(@project, @models_hash)
       @user.projects << @project
-      redirect :"projects/#{@project_name}"
+      redirect "/projects/#{@project.id}"
     else
       redirect "/login"
     end
@@ -57,4 +57,16 @@ class ProjectsController < ApplicationController
       redirect "/login"
     end
   end
+
+  patch "/projects/:id" do
+    if user_is_logged_in
+      @project = Project.find {|project| project.id == params[:id].to_i}
+      @project.update(name: params[:project_name], description: params[:description])
+      update_models_name(params[:models])
+      redirect "/projects/#{@project.id}"
+    else
+      redirect "/login"
+    end
+  end
+
 end

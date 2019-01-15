@@ -175,6 +175,15 @@ class ApplicationController < Sinatra::Base
     end
 
 
+    def update_models_name(models_hash)
+      models_hash.each do |id, name|
+        find_model = Model.find {|m| m.id == id.to_i}
+        find_model.update(name: name)
+      end
+    end
+
+
+
 
   end
 end
