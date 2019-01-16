@@ -1,5 +1,7 @@
 <h1>Please select the number of models you will be using.</h1>
-
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <form action="/projects/new/model-names" method="POST">
   <select name="num_of_models">
     <option value="1">1</option>

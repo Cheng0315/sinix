@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  use Rack::Flash
 
   get "/projects/new" do
     if user_is_logged_in
@@ -23,6 +22,7 @@ class ProjectsController < ApplicationController
       @user.projects << @project
       redirect "/projects/#{@project.id}"
     else
+      flash[:message] = "Invalid input(s). Please reselect the number of models you'll be using, click submit, and fill in all the field."
       redirect "/projects/new"
     end
   end
@@ -65,6 +65,7 @@ class ProjectsController < ApplicationController
       update_models_name(params[:models])
       redirect "/projects/#{@project.id}"
     else
+      flash[:message] = "Invalid input(s)"
       redirect "/projects/#{@project.id}/edit"
     end
   end

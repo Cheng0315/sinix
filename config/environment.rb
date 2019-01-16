@@ -6,5 +6,4 @@ ActiveRecord::Base.establish_connection(
   :database => "db/development.sqlite"
 )
 
-require 'rack-flash'
 require_all 'app'

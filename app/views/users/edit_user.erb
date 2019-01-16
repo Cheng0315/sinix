@@ -1,4 +1,7 @@
 <h1>Edit User Info</h1>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <form action="/users/<%=@user.first_name%>-<%=@user.last_name%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
 

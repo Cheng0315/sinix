@@ -1,13 +1,11 @@
 require './config/environment'
 class UsersController < ApplicationController
-  use Rack::Flash
 
   get "/login" do
     if user_is_logged_in
       @user = current_user
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
-      flash[:message] = "Invalid email or password"
       erb :index
     end
   end
@@ -18,6 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
+      flash[:message] = "Invalid email or password"
       redirect "/login"
     end
   end
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
       @user = current_user
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
-      flash[:message] = "Invalid input(s)"
       erb :"users/create_user"
     end
   end
@@ -56,6 +54,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
+      flash[:message] = "Invalid input(s)"
       redirect "/signup"
     end
   end
@@ -75,6 +74,7 @@ class UsersController < ApplicationController
       @user.update(params[:user])
       redirect "/users/#{@user.first_name}-#{@user.last_name}"
     else
+      flash[:message] = "Invalid input(s)"
       @user = current_user
       redirect "/users/#{@user.first_name}-#{@user.last_name}/edit"
     end
