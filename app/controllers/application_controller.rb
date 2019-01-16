@@ -101,9 +101,9 @@ class ApplicationController < Sinatra::Base
 
       models_hash.each_with_index do |model, index|
         if index == 0
-          views += "<a href='/projects/new'>#{model[1]}s</a><br>"
+          views += "#{model[1]}s<br>"
         else
-          views += "        <a href='/projects/new'>#{model[1]}s</a><br>"
+          views += "        #{model[1]}s<br>"
         end
 
         if index == models_hash.length - 1

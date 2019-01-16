@@ -10,27 +10,32 @@
 
 <pre>
   <code>
-  <%=@project_name%>
-    <a href="login">app</a>
-      <a href="login">controllers</a>
+<div>
+  <a href="#controllers" style="text-decoration:none"><%=@project_name%>
+    <a href="#controllers" style="text-decoration:none">app</a>
+      <a href="#controllers" style="text-decoration:none">controllers</a>
         application_controllers.rb
         <%=add_controllers(@models_hash)%>
-      models
+      <a href="#models" style="text-decoration:none">models</a>
         <%=add_models(@models_hash)%>
-      views
+      <a href="#views" style="text-decoration:none">views</a>
         <%=add_views_folders_and_files(@models_hash)%>
-    index.erb
-    layout.erb
-    config
+        index.erb
+        layout.erb
+    <a href="#config/envir" style="text-decoration:none">config</a>
       environment.rb
-    db
+    <a href="#db" style="text-decoration:none">db</a>
       migrate
         <%=create_migration_files(@models_hash)%>
-    config.ru
-    Gemfile
-    Rakefile
+    <a href="#configru" style="text-decoration:none">config.ru</a>
+    <a href="#gemfile" style="text-decoration:none">Gemfile</a>
+    <a href="#rakefile" style="text-decoration:none">Rakefile</a>
+  </div>
   <br><br><br><br>
   <!-- View Page  -->
+
+<div>
+<div id="controllers">
               controllers
 
 class ApplicationController < Sinatra::Base
@@ -38,13 +43,13 @@ class ApplicationController < Sinatra::Base
 end
 
 <%=display_controller_classes(@models_hash)%>
-
-
+</div>
+<div id="models">
               models
 
 <%=display_model_classes(@models_hash)%>
-
-
+</div>
+<div id="views">
               views
 
 add your html/erb code in your erb files inside your views folder
@@ -63,7 +68,8 @@ layout.erb
     <%%= yield %>
   &lt;/body&gt;
 &lt;/html&gt;
-  </pre>
+  </pre></div>
+<div id="config/envir">
               config/environment.rb
 
 require 'bundler/setup'
@@ -75,13 +81,13 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app'
+</div>
 
-
-
+<div id="db">
               db/migrate
 
 <%=display_migration_files(@models_hash)%>
-
+</div><div id="configru">
               config.ru
 
 require './config/environment'
@@ -93,9 +99,9 @@ end
 use Rack::MethodOverride
 <%=use_controllers(@models_hash)%>
 run ApplicationController
+</div>
 
-
-
+<div id="gemfile">
               Gemfile
 
 source "https://rubygems.org"
@@ -112,9 +118,9 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'rack-flash3'
+</div>
 
-
-
+<div id="rakefile">
               Rakefile
 
 require_relative './config/environment'
@@ -122,5 +128,7 @@ require 'sinatra/activerecord/rake'
 
 require "bundler/gem_tasks"
 task :default => :spec
+</div>
+</div>
 </code>
 </pre>
