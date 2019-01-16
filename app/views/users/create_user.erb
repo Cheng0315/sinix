@@ -2,7 +2,10 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-6 col-md-3">
-      <h2>Sign up and start structuring your next big Sinatra Project</h2>
+      <div class="form-container">
+      <h2 class="row justify-content-center">Sign up</h2>
+      <h4 class="row justify-content-center">Start structuring your next big</h4>
+      <h4 class="row justify-content-center">Sinatra Project</h4>
       <% if flash.has?(:message) %>
         <%= flash[:message] %>
       <% end %>
@@ -24,14 +27,14 @@
             <input type="password" name ="user[password]" class="form-control" id="password" placeholder="Password">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control" id="Submit">Create Account</button>
+            <button type="submit" class="btn btn-primary form-control" id="Submit">Sign up</button>
           </div>
         </form>
       </div>
       <div class="row justify-content-center">
-      <label>Already have an account? </label><a href="/login">Log In</a>
+      <a href="/login">Already have an account? Log In</a>
     </div>
     </div>
   </div>
+  </div>
 </div>
-<br><br>
