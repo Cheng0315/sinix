@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
 
     def add_models_to_project(project, models_hash)
       models_hash.each_value do |model_name|
-        model = Model.create(name: model_name)
+        model = Model.create(name: model_name.downcase)
         project.models << model
       end
     end
@@ -189,7 +189,7 @@ class ApplicationController < Sinatra::Base
     def update_models_name(models_hash)
       models_hash.each do |id, name|
         find_model = Model.find {|m| m.id == id.to_i}
-        find_model.update(name: name)
+        find_model.update(name: name.downcase)
       end
     end
 
