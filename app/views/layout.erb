@@ -7,6 +7,9 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <link rel="stylesheet" type="text/css" href="../../../style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js">
+
    <title>Sinix</title>
    <style>
    .form-container {
@@ -17,6 +20,7 @@
      border-radius: 10px;
      box-shadow: 0px 0px 10px 0px #000;
    }
+
    .background-img {
      background-image: url(https://backgroundcheckall.com/wp-content/uploads/2018/10/blurry-blue-background-3.jpg);
      background-size: cover;
@@ -28,6 +32,16 @@
    }
    .list-projects-bg{
      background-color: #eef9ff;
+   }
+
+   .profile-page {
+     background: red;
+     border-radius:10px;
+     padding: 30px;
+     border-radius: 10px;
+     box-shadow: 0px 0px 10px 0px #000;
+     background-color: white;
+     height: 400px;
    }
 
    </style>
@@ -50,13 +64,13 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto text-right">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/profile"><h6><%=current_user.first_name%></h6></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit"><h6>Edit User Info</h6></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/logout"><h6>Logout</h6></a>
                 </li>
             </ul>

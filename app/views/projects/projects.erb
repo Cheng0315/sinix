@@ -11,10 +11,10 @@
     <li>
       <div class="list-group-item list-group-item-action list-projects-bg">
         <div>
-          <h5 style="display: inline-block"><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5><span class="float-right">Date created: <%=project.date_created%></span>
+          <h5 style="display: inline-block"><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5>
         </div>
         <div>
-          <%=project.description%>
+          <%=project.description%><span class="float-right">Date created: <%=project.date_created%></span>
         </div>
 
       </div>
@@ -26,5 +26,3 @@
 </div>
 
 </div>
-
-<a href="/logout"><h5>Log Out</h5></a>
