@@ -2,25 +2,28 @@
   <div class="row justify-content-center">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="form-container">
-        <h3 class="form-group">Update your project&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h3>
+        <h3 class="row justify-content-center">&emsp;&emsp;&emsp;Update your project&emsp;&emsp;&emsp;</h3>
         <% if flash.has?(:message) %>
           <%= flash[:message] %>
         <% end %>
         <form action="/projects/<%=@project.id%>" method="POST">
           <input type="hidden" id="hidden" name="_method" value="PATCH">
 
+
           <div class="form-group">
-            <input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
+            <h6>Project Name</h6><input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
           </div>
 
+          <h6>Model(s)</h6>
           <%@project.models.each_with_index do |model, i|%>
+
             <div class="form-group">
               <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
             </div>
           <%end%>
 
           <div class="form-group">
-            <input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>">
+            <h6>Description</h6><input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>">
           </div>
 
           <div class="form-group">
