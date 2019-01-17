@@ -1,24 +1,33 @@
 <h1>Welcome <%=capitalize_model_name(@user.first_name)%></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-sm-offset-3">
 
-<h2>Projects</h2>
 
-<div>
+
+<div class="list-group">
+  <h2 class="row justify-content-center">Projects</h2>
   <ul style="list-style-type: none;">
     <%Project.all.each do |project|%>
     <li>
-      <div>
-        <h3><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h3>
-      </div>
-      <div>
-        <%=project.description%>
-      </div>
-      <div>
-        Date created: <%=project.date_created%>
+      <div class="list-group-item list-group-item-action">
+        <div>
+          <h5><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5>
+        </div>
+        <div>
+          <%=project.description%>
+        </div>
+        <div>
+          Date created: <%=project.date_created%>
+        </div>
       </div>
     </li>
     <%end%>
   </ul>
-</div>
 
+</div>
+</div>
+</div>
+</div>
 
 <a href="/logout"><h5>Log Out</h5></a>
