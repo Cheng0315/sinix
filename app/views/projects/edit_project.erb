@@ -1,21 +1,29 @@
-<h1>Edit</h1>
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-<form action="/projects/<%=@project.id%>" method="POST">
-  <input type="hidden" id="hidden" name="_method" value="PATCH">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="form-container">
+        <h3 class="form-group">Update your project</h3>
+        <form action="/projects/<%=@project.id%>" method="POST">
+          <input type="hidden" id="hidden" name="_method" value="PATCH">
 
-  <label for="name">Project's Name: </label>
-  <input type="text" name="project_name" id="name" value="<%=@project.name%>">
+          <div class="form-group">
+            <input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
+          </div>
 
-  <label for="model_names">Model Names: </label>
+          <%@project.models.each_with_index do |model, i|%>
+            <div class="form-group">
+              <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
+            </div>
+          <%end%>
 
-  <%@project.models.each_with_index do |model, i|%>
-    <input type="text" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
-  <%end%>
+          <div class="form-group">
+            <input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>">
+          </div>
 
-  <label for="description">Description: </label>
-  <input type="text" name="description" id="description" value="<%=@project.description%>">
-
-  <input type="submit" value="Submit Changes" id="Submit">
-</form>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary form-control" id="Continue">Update Project</button>
+          </div>
+        </form>
+    </div>
+  </div>
+  </div>
