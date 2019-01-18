@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid add-margin-top" >
   <div >
   <%if project_belongs_to_user(params[:id])%>
   <form style="display: inline-block;" action="/projects/<%= @project.id %>/delete" method="POST">

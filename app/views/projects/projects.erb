@@ -1,12 +1,11 @@
-
-<div class="container">
+<div class="container add-margin-top">
     <div>
 
-<h1 class="row justify-content-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
+<h1 class="text-align-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
 
 <div class="list-group">
-  <h2 class="row justify-content-center">Projects</h2>
-  <ul style="list-style-type: none; margin-bottom: 50px; margin-left: -38px;">
+  <h2 class="text-align-center">Projects</h2>
+  <ul style="list-style-type: none; margin-bottom: 100px; margin-left: -38px;">
     <%Project.all.each do |project|%>
     <li>
       <div class="list-group-item list-group-item-action list-projects-bg">
