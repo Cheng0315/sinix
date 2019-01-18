@@ -7,7 +7,7 @@
   box-shadow: 0px 0px 10px 0px #000;
 }
 
-.background-img {
+body {
   background-image: url(https://backgroundcheckall.com/wp-content/uploads/2018/10/blurry-blue-background-3.jpg);
   background-size: cover;
   background-attachment: fixed;
