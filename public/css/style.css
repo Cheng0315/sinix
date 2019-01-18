@@ -34,3 +34,7 @@ body {
   background-color: white;
   height: 400px;
 }
+
+nav.navbar a:hover {
+  color: grey !important;
+}
