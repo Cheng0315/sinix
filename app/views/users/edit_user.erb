@@ -5,7 +5,7 @@
       <div class="form-container form-bg-color">
       <h2 class="row justify-content-center">Update your information</h2>
       <% if flash.has?(:message) %>
-        <%= flash[:message] %>
+        <div style="color:red;"><%= flash[:message] %> </div>
       <% end %>
 
       <div >

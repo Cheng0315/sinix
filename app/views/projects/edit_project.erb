@@ -4,7 +4,7 @@
       <div class="form-container form-bg-color">
         <h3 class="row justify-content-center">&emsp;&emsp;&emsp;Update your project&emsp;&emsp;&emsp;</h3>
         <% if flash.has?(:message) %>
-          <%= flash[:message] %>
+          <div style="color:red;"><%= flash[:message] %> </div>
         <% end %>
         <form action="/projects/<%=@project.id%>" method="POST">
           <input type="hidden" id="hidden" name="_method" value="PATCH">
@@ -23,7 +23,7 @@
           <%end%>
 
           <div class="form-group">
-            <h6>Description</h6><input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>" maxlength="125">
+            <h6>Description</h6><input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>" maxlength="75">
           </div>
 
           <div class="form-group">

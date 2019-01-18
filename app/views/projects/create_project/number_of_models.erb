@@ -5,7 +5,7 @@
       <div class="form-container form-bg-color">
         <h3 class="form-group">Please enter the number of models you will be using.</h3>
         <% if flash.has?(:message) %>
-          <%= flash[:message] %>
+          <div style="color:red;"><%= flash[:message] %> </div>
         <% end %>
         <form action="/projects/new/model-names" method="POST">
           <select name="num_of_models" class="browser-default custom-select form-group">
