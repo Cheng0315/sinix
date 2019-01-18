@@ -1,17 +1,21 @@
-<%if project_belongs_to_user(params[:id])%>
-<form action="/projects/<%= @project.id %>/edit" method="get">
-  <input type="submit" value="Edit Project" id="Edit Project" name="Edit Project">
-</form>
-<form action="/projects/<%= @project.id %>/delete" method="POST">
-  <input type="hidden" value="delete" id="hidden" name="_method">
-  <input type="submit" value="Delete Project" id="Delete Project" name="Delete Project">
-</form>
-<%end%>
+<div class="container-fluid">
+  <div >
+  <%if project_belongs_to_user(params[:id])%>
+  <form style="display: inline-block;" action="/projects/<%= @project.id %>/delete" method="POST">
+    <input type="hidden" value="delete" id="hidden" name="_method">
+    <button type="submit" class="btn btn-danger">Delete Project</button>
+  </form>
+  <form style="display: inline-block;" action="/projects/<%= @project.id %>/edit" method="get">
+    <button type="submit" class="btn btn-warning">Edit Project</button>
+  </form>
+  <%end%>
+  </div>
 
-<pre>
+<div class="row">
+  <div class="col-lg-4">
+<pre >
   <code>
-<div>
-<a href="#controllers" style="text-decoration:none"><%=@project_name%>
+
   <a href="#controllers" style="text-decoration:none">app</a>
     <a href="#controllers" style="text-decoration:none">controllers</a>
       application_controllers.rb
@@ -30,11 +34,13 @@
   <a href="#configru" style="text-decoration:none">config.ru</a>
   <a href="#gemfile" style="text-decoration:none">Gemfile</a>
   <a href="#rakefile" style="text-decoration:none">Rakefile</a>
+</code>
+  </pre>
   </div>
-  <br><br><br><br>
   <!-- View Page  -->
-
-<div>
+<div class="col-lg-6 col-lg-offset-2">
+<pre >
+<code>
 <div id="controllers">
               controllers
 
@@ -129,6 +135,8 @@ require 'sinatra/activerecord/rake'
 require "bundler/gem_tasks"
 task :default => :spec
 </div>
-</div>
 </code>
 </pre>
+</div>
+</div>
+</div>
