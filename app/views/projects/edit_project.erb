@@ -1,22 +1,22 @@
 <div class="container add-margin-top">
   <div class="row justify-content-center" style="margin-top: -100px;">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-6 col-sm-offset-3">
       <div class="form-container form-bg-color" style=" margin-bottom: 100px;">
-        <h3 class="text-align-center">Update your project</h3>
+        <h3 class="form-group">Update your project</h3>
+        <!-- Display error message if user input bad charaters or leave empty field-->
         <% if flash.has?(:message) %>
           <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
         <% end %>
+        <!-- Edit project form-->
         <form action="/projects/<%=@project.id%>" method="POST">
           <input type="hidden" id="hidden" name="_method" value="PATCH">
-
 
           <div class="form-group">
             <h6>Project Name</h6><input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
           </div>
-
+          <!-- Iterate through the project's models array and display them in the form for edit-->
           <h6>Model(s)</h6>
           <%@project.models.each_with_index do |model, i|%>
-
             <div class="form-group">
               <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
             </div>
@@ -30,6 +30,7 @@
             <button type="submit" class="btn btn-primary form-control" id="Continue">Update Project</button>
           </div>
         </form>
+      </div><!-- form container-->
     </div>
-  </div>
-  </div>
+  </div><!-- row -->
+</div>

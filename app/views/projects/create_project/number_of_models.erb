@@ -4,9 +4,11 @@
     <div class="col-sm-6 col-sm-offset-3">
       <div class="form-container form-bg-color" style=" margin-bottom: 100px;">
         <h3 class="form-group text-align-center">Please enter the number of models you will be using.</h3>
+        <!-- Display error message if user input bad charaters or leave empty field-->
         <% if flash.has?(:message) %>
           <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
         <% end %>
+        <!-- Drop down select for the number of models the user will be using-->
         <form action="/projects/new/model-names" method="POST">
           <select name="num_of_models" class="browser-default custom-select form-group">
             <option value="1">1</option>
@@ -24,7 +26,7 @@
             <button type="submit" class="btn btn-primary form-control" id="Continue">Continue</button>
           </div>
         </form>
+      </div><!-- form container-->
     </div>
-  </div>
-  </div>
+  </div><!-- row -->
 </div>

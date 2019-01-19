@@ -1,20 +1,23 @@
 <div class="container-fluid add-margin-top" >
-  <div >
-  <%if project_belongs_to_user(params[:id])%>
-  <form style="display: inline-block;" action="/projects/<%= @project.id %>/delete" method="POST">
-    <input type="hidden" value="delete" id="hidden" name="_method">
-    <button type="submit" class="btn btn-danger">Delete Project</button>
-  </form>
-  <form style="display: inline-block;" action="/projects/<%= @project.id %>/edit" method="get">
-    <button type="submit" class="btn btn-warning">Edit Project</button>
-  </form>
-  <%end%>
+
+  <div ><!-- Display delete and edit button if project belongs to user-->
+    <%if project_belongs_to_user(params[:id])%>
+      <form style="display: inline-block;" action="/projects/<%= @project.id %>/delete" method="POST">
+        <input type="hidden" value="delete" id="hidden" name="_method">
+        <button type="submit" class="btn btn-danger">Delete Project</button>
+      </form>
+      <form style="display: inline-block;" action="/projects/<%= @project.id %>/edit" method="get">
+        <button type="submit" class="btn btn-warning">Edit Project</button>
+      </form>
+    <%end%>
   </div>
 
-<div class="row">
-  <div class="col-lg-4">
-<pre >
-  <code>
+<!-- row that holds the code texts-->
+  <div class="row">
+<!-- Display the project in code texts, left column, folders and files-->
+    <div class="col-lg-4">
+      <pre >
+        <code>
 
   app
     controllers
@@ -35,12 +38,14 @@
   Gemfile
   Rakefile
 </code>
-  </pre>
-  </div>
-  <!-- View Page  -->
+</pre>
+</div><!-- End of left column-->
+
+
+<!-- Display the project in code texts, right column, codes-->
 <div class="col-lg-6 col-lg-offset-2">
-<pre >
-<code>
+  <pre >
+    <code>
 
               controllers
 
@@ -135,8 +140,8 @@ require 'sinatra/activerecord/rake'
 require "bundler/gem_tasks"
 task :default => :spec
 
-</code>
-</pre>
-</div>
-</div>
-</div>
+        </code>
+      </pre>
+    </div><!-- End of right column-->
+  </div><!-- row -->
+</div><!-- container -->

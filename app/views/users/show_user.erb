@@ -1,13 +1,13 @@
 <div class="container add-margin-top">
   <div class="row justify-content-center" style="margin-top: 170px">
     <div class="jumbotron profile-page" >
-      <h2 style="margin:auto;" class="row justify-content-center"><span class="glyphicon glyphicon-user"></span> &emsp;&emsp;User Profile&emsp;&emsp;</h2>
+      <h2 style="margin:auto;" class="row justify-content-center">&emsp;&emsp;User Profile&emsp;&emsp;</h2>
       <br><br>
-
+      <!-- Display user's name-->
       <h6 class="text-align-center">Name</h6>
       <h3 class="text-align-center"><%=current_user.first_name%>&nbsp;<%=current_user.last_name%></h3>
       <br><br>
-
+      <!-- Display user's email-->
       <h6 class="text-align-center">Email</h6>
       <h3 class="text-align-center"><%=current_user.email%></h3>
     </div>

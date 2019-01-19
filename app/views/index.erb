@@ -3,29 +3,30 @@
     <div class="col-md-6 col-sm-offset-3">
       <div class="form-container form-bg-color">
         <h1 class="text-align-center">Sinix</h1>
-      <h4 class="form-group text-align-center">Where developers structured their next big Sinatra Project</h4>
-
-      <% if flash.has?(:message) %>
-        <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
-      <% end %>
-
-      <div >
-        <form action="/login" method="POST">
-          <div class="form-group">
-            <input type="email" name ="email" class="form-control" id="email" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input type="password" name ="password" class="form-control" id="password" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control" id="Submit">Login</button>
-          </div>
-        </form>
-      </div>
-      <div class="text-align-center">
-      <a href="/signup">Don't have an account? Sign up</a>
-    </div>
-    </div>
-  </div>
-  </div>
-</div>
+        <h4 class="form-group text-align-center">Where developers structured their next big Sinatra Project</h4>
+        <!-- Display error message if user input wrong email or password-->
+        <% if flash.has?(:message) %>
+          <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
+        <% end %>
+        <!-- login form-->
+        <div >
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <input type="email" name ="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name ="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary form-control" id="Submit">Login</button>
+            </div>
+          </form>
+        </div>
+        <!-- Sign up link-->
+        <div class="text-align-center">
+        <a href="/signup">Don't have an account? Sign up</a>
+        </div>
+      </div><!-- form container-->
+    </div><!-- col container-->
+  </div><!-- row container-->
+</div><!-- container-->

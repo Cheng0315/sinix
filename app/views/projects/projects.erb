@@ -1,30 +1,28 @@
 <div class="container add-margin-top">
-    <div>
 
-<h1 class="text-align-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
-
-<div class="list-group">
-  <h2 class="text-align-center">Projects</h2>
-  <ul style="list-style-type: none; margin-bottom: 100px; margin-left: -38px;">
-    <%Project.all.each do |project|%>
-    <li>
-      <div class="list-group-item list-group-item-action list-projects-bg">
-        <div>
-          <h5 style="display: inline-block"><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5>
-        </div>
-        <div>
-          <p style="margin: 0; padding: 0;" class="float-right">Date created: <%=project.date_created%></p>
-        </div>
-          <div >
-          <p style="margin: 0; padding: 0;"><%=project.description%></p>
-        </div>
-
-      </div>
-    </li>
-    <%end%>
-  </ul>
-
-</div>
-</div>
-
-</div>
+  <div>
+    <h1 class="text-align-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
+    <!-- Display list of projects-->
+    <div class="list-group">
+      <h2 class="text-align-center">Projects</h2>
+      <ul style="list-style-type: none; margin-bottom: 100px; margin-left: -38px;">
+        <!-- Iterate through class Project to retrieve all the project and display them in a list-->
+        <%Project.all.each do |project|%>
+        <li>
+          <div class="list-group-item list-group-item-action list-projects-bg">
+            <div>
+              <h5 style="display: inline-block"><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5>
+            </div>
+            <div>
+              <p class="float-right">Date created: <%=project.date_created%></p>
+            </div>
+              <div >
+              <p><%=project.description%></p>
+            </div>
+          </div>
+        </li>
+        <%end%>
+      </ul>
+    </div><!-- list group-->
+  </div>
+</div><!-- container-->

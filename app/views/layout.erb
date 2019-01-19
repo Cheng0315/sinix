@@ -1,58 +1,67 @@
 <!DOCTYPE html>
-<head>
-   <!-- Required meta tags -->
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
 
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-   <link rel="stylesheet" type="text/css" href="../../css/style.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinix</title>
 
-   <title>Sinix</title>
- </head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- cdnjs normalizer and modernizr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+  </head>
+
   <body>
-      <% if user_is_logged_in %>
+
+    <!-- Display navbar if user is logged in -->
+    <% if user_is_logged_in %>
+
+      <!-- Navbar brand-->
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-        <a class="navbar-brand abs" href="/projects"><h4>Sinix</h4></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+          <a class="navbar-brand abs" href="/projects"><h4>Sinix</h4></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="collapsingNavbar">
+          </button>
+          <!-- Navbar collapse-->
+          <div class="navbar-collapse collapse" id="collapsingNavbar">
+            <!-- Navbar left content-->
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/projects"><h6>Projects</h6></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/projects/new"><h6>Create New Project</h6></a>
-                </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/projects"><h6>Projects</h6></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/projects/new"><h6>Create New Project</h6></a>
+              </li>
             </ul>
 
-
+            <!-- Navbar right content-->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/profile"><h6><%=current_user.first_name%></h6></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit"><h6>Edit User Info</h6></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/logout"><h6>Logout</h6></a>
-                </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/profile"><h6><%=current_user.first_name%></h6></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit"><h6>Edit User Info</h6></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/logout"><h6>Logout</h6></a>
+              </li>
             </ul>
-        </div>
-        </div>
-      </nav>
-      <%= yield %>
+        </div><!-- Navbar collapse-->
+      </div><!-- Container fluid-->
+    </nav>
+  <%= yield %><!-- Display HTML with navbar - User is logged in-->
+    <%else%>
+  <%= yield %><!-- Display logged in or sign up form - User is not logged in-->
+    <%end%>
 
-      <%else%>
-    <%= yield %>
-      <%end%>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
