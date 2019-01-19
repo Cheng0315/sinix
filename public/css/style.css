@@ -77,9 +77,9 @@ nav.navbar a:hover {
   visibility: hidden;
 }
 
-.controller-anchor {
+.controllers-anchor {
   display: block;
-  height: 110px; /*same height as header*/
+  height: 95px; /*same height as header*/
   margin-top: -70px; /*same height as header*/
   visibility: hidden;
 }
@@ -90,4 +90,11 @@ pre code font a {
 
 pre code font a:hover {
   color: green;
+}
+
+.controller-style {
+  text-decoration:none;
+  display:inline-block;
+  margin-top: -30px;
+  margin-bottom: -5px;
 }
