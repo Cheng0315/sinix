@@ -49,6 +49,16 @@ nav.navbar a:hover {
   margin-top: 30px;
 }
 
+.add-margin-and-width {
+  margin-bottom: 100px;
+  width: 90%;
+}
+
+.delete-margin {
+  margin-top: -100px;
+  margin-right: -30px;
+}
+
 .text-align-center {
   text-align: center;
 }
