@@ -19,24 +19,24 @@
       <pre >
         <code>
           <font color="white">
-  app
-    controllers
+  <a href="#controllers" style="text-decoration:none">app</a>
+    <a href="#controllers" style="text-decoration:none">controllers</a>
       application_controllers.rb
       <%=add_controllers(@models_hash)%>
-    models
+    <a href="#models" style="text-decoration:none">models</a>
       <%=add_models(@models_hash)%>
-    views
+    <a href="#views" style="text-decoration:none">views</a>
       <%=add_views_folders_and_files(@models_hash)%>
       index.erb
       layout.erb
-  config
+  <a href="#config/envir" style="text-decoration:none">config</a>
     environment.rb
-  db
+  <a href="#db" style="text-decoration:none">db</a>
     migrate
       <%=create_migration_files(@models_hash)%>
-  config.ru
-  Gemfile
-  Rakefile
+  <a href="#configru" style="text-decoration:none">config.ru</a>
+  <a href="#gemfile" style="text-decoration:none">Gemfile</a>
+  <a href="#rakefile" style="text-decoration:none">Rakefile</a>
 </code>
 </pre>
 </div><!-- End of left column-->
@@ -46,7 +46,7 @@
 <div class="col-lg-6 col-lg-offset-2">
   <pre >
     <code>
-
+<span class="controller-anchor" id="controllers"></span>
               controllers
 
 class ApplicationController < Sinatra::Base
@@ -55,12 +55,12 @@ end
 
 <%=display_controller_classes(@models_hash)%>
 
-
+<span class="anchor" id="models"></span>
               models
 
 <%=display_model_classes(@models_hash)%>
 
-
+<span class="anchor" id="views"></span>
               views
 
 add your html/erb code in your erb files inside your views folder
@@ -80,7 +80,7 @@ layout.erb
   &lt;/body&gt;
 &lt;/html&gt;
   </font></pre>
-
+<span class="anchor" id="config/envir"></span>
               config/environment.rb
 
 require 'bundler/setup'
@@ -94,11 +94,11 @@ ActiveRecord::Base.establish_connection(
 require_all 'app'
 
 
-
+<span class="anchor" id="db"></span>
               db/migrate
 
 <%=display_migration_files(@models_hash)%>
-
+<span class="anchor" id="configru"></span>
               config.ru
 
 require './config/environment'
@@ -112,7 +112,7 @@ use Rack::MethodOverride
 run ApplicationController
 
 
-
+<span class="anchor" id="gemfile"></span>
               Gemfile
 
 source "https://rubygems.org"
@@ -131,7 +131,7 @@ gem 'tux'
 gem 'rack-flash3'
 
 
-
+<span class="anchor" id="rakefile"></span>
               Rakefile
 
 require_relative './config/environment'

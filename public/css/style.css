@@ -69,3 +69,25 @@ nav.navbar a:hover {
   padding-top: 20px;
   background: #263238;
 }
+
+.anchor {
+  display: block;
+  height: 70px; /*same height as header*/
+  margin-top: -70px; /*same height as header*/
+  visibility: hidden;
+}
+
+.controller-anchor {
+  display: block;
+  height: 110px; /*same height as header*/
+  margin-top: -70px; /*same height as header*/
+  visibility: hidden;
+}
+
+pre code font a {
+  color: white;
+}
+
+pre code font a:hover {
+  color: green;
+}
