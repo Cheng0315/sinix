@@ -45,6 +45,10 @@ nav.navbar a:hover {
   margin-top: 80px;
 }
 
+.margin {
+  margin-top: 30px;
+}
+
 .text-align-center {
   text-align: center;
 }
