@@ -1,4 +1,4 @@
-<div class="container-fluid add-margin-top" >
+<div class="container-fluid show-project-padding">
 
   <div ><!-- Display delete and edit button if project belongs to user-->
     <%if project_belongs_to_user(params[:id])%>
@@ -18,7 +18,7 @@
     <div class="col-lg-4">
       <pre >
         <code>
-
+          <font color="white">
   app
     controllers
       application_controllers.rb
@@ -68,7 +68,7 @@ add 'index.erb' on the first layer of your views folder
 add 'layout.erb' on the first layer of your views folder
 
 layout.erb
-<pre>
+<pre><font color="white">
 &lt;DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -79,7 +79,7 @@ layout.erb
     <%%= yield %>
   &lt;/body&gt;
 &lt;/html&gt;
-  </pre>
+  </font></pre>
 
               config/environment.rb
 
@@ -139,7 +139,7 @@ require 'sinatra/activerecord/rake'
 
 require "bundler/gem_tasks"
 task :default => :spec
-
+          </font>
         </code>
       </pre>
     </div><!-- End of right column-->
