@@ -73,7 +73,7 @@ layout.erb
 &lt;DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Sinix&lt;/title&gt;
+    &lt;title&gt;<%=@project_name%>&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
@@ -140,6 +140,9 @@ require 'sinatra/activerecord/rake'
 
 require "bundler/gem_tasks"
 task :default => :spec
+
+
+              <a href="#controllers" style="text-decoration:none;" class="controller-style">Back to top</a>
           </font>
         </code>
       </pre>

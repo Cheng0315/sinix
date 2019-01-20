@@ -151,7 +151,7 @@ class ApplicationController < Sinatra::Base
         controller_classes += "end<br><br>"
       end
 
-      controller_classes
+      controller_classes + "                "
     end
 
     def display_model_classes(models_hash)
