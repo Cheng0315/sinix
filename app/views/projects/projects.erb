@@ -1,11 +1,11 @@
-<div class="container add-margin-top index-bg">
+<div class="container add-margin-top list-container-bg">
 
   <div>
     <h1 class="text-align-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
     <!-- Display list of projects-->
     <div class="list-group">
       <h2 class="text-align-center">Projects</h2>
-      <ul style="list-style-type: none; margin-bottom: 100px; margin-left: -38px;">
+      <ul style="list-style-type: none; margin-bottom: 20px; margin-left: -38px;">
         <!-- Iterate through class Project to retrieve all the project and display them in a list-->
         <%Project.all.each do |project|%>
         <li>
