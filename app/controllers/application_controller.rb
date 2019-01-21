@@ -147,7 +147,7 @@ class ApplicationController < Sinatra::Base
       controller_classes = ""
 
       models_hash.each_with_index do |model, index|
-        controller_classes += "class #{capitalize_model_name_with_s_as_last_char(model[1])}Controller < Application<br><br>"
+        controller_classes += "class #{capitalize_model_name_with_s_as_last_char(model[1])}Controller < ApplicationController<br><br>"
         controller_classes += "end<br><br>"
       end
 

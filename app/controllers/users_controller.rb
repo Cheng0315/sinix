@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     if user_inputs_does_not_contain_empty_field(params[:user])
       @user = current_user
       @user.update(params[:user])
-      redirect "/users/#{@user.first_name}-#{@user.last_name}"
+      redirect "/users/#{@user.first_name}-#{@user.last_name}/profile"
     else
       flash[:message] = "Invalid input(s)"
       @user = current_user

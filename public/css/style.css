@@ -3,19 +3,24 @@
   top: 150px;
   background: #fff;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px 0px #000;
   margin-right: 17px;
   margin-bottom: 50px;
 }
 
 body {
-  background-image: url(https://backgroundcheckall.com/wp-content/uploads/2018/10/blurry-blue-background-3.jpg);
+  background-image: url(https://www.wysersolutions.com/wp-content/uploads/2017/04/people-working-together-in-meeting.jpg);
+
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
 
+}
+
+.index-bg {
+  background-image: url(https://backgroundcheckall.com/wp-content/uploads/2018/10/blurry-blue-background-3.jpg);
 }
 .form-bg-color{
   background-color: #f2f9ff;
@@ -102,4 +107,10 @@ pre code a:hover {
 ul li p {
   margin: 0;
   padding: 0;
+}
+
+footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
 }
