@@ -80,9 +80,9 @@ class ApplicationController < Sinatra::Base
       controllers = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          controllers += "#{model[1]}s_controller.rb"
+          controllers += " <i class='fas fa-file-alt'></i> #{model[1]}s_controller.rb"
         else
-          controllers += "#{model[1]}s_controller.rb</a><br>      "
+          controllers += " <i class='fas fa-file-alt'></i> #{model[1]}s_controller.rb<br>    "
         end
       end
       controllers
@@ -92,9 +92,9 @@ class ApplicationController < Sinatra::Base
       models = ""
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          models += "#{model[1]}.rb"
+          models += " <i class='fas fa-file-alt'></i> #{model[1]}.rb"
         else
-          models += "#{model[1]}.rb<br>      "
+          models += " <i class='fas fa-file-alt'></i> #{model[1]}.rb<br>    "
         end
       end
       models
@@ -105,21 +105,21 @@ class ApplicationController < Sinatra::Base
 
       models_hash.each_with_index do |model, index|
         if index == 0
-          views += "#{model[1]}s<br>"
+          views += "<i class='far fa-folder-open'></i> #{model[1]}s<br>"
         else
-          views += "      #{model[1]}s<br>"
+          views += "    <i class='far fa-folder-open'></i> #{model[1]}s<br>"
         end
 
         if index == models_hash.length - 1
-          views += "        #{model[1]}s.erb<br>"
-          views += "        create_#{model[1]}.erb<br>"
-          views += "        edit_#{model[1]}.erb<br>"
-          views += "        show_#{model[1]}.erb"
+          views += "       <i class='fas fa-file-alt'></i> #{model[1]}s.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> create_#{model[1]}.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> edit_#{model[1]}.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> show_#{model[1]}.erb"
         else
-          views += "        #{model[1]}s.erb<br>"
-          views += "        create_#{model[1]}.erb<br>"
-          views += "        edit_#{model[1]}.erb<br>"
-          views += "        show_#{model[1]}.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> #{model[1]}s.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> create_#{model[1]}.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> edit_#{model[1]}.erb<br>"
+          views += "       <i class='fas fa-file-alt'></i> show_#{model[1]}.erb<br>"
         end
       end
 
@@ -132,10 +132,10 @@ class ApplicationController < Sinatra::Base
 
       models_hash.each_with_index do |model, index|
         if index == models_hash.length - 1
-          migration_files += "00#{id}_create_#{model[1]}s.rb"
+          migration_files += " <i class='fas fa-file-alt'></i> 00#{id}_create_#{model[1]}s.rb"
           id += 1
         else
-          migration_files += "00#{id}_create_#{model[1]}s.rb<br>      "
+          migration_files += " <i class='fas fa-file-alt'></i> 00#{id}_create_#{model[1]}s.rb<br>    "
           id += 1
         end
       end

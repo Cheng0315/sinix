@@ -20,24 +20,24 @@
         <code>
           <font color="white">
 <a href="#controllers" style="text-decoration:none" class="controller-style"><h5><%=@project_name%></h5></a>
-  <a href="#controllers" style="text-decoration:none">app</a>
-    <a href="#controllers" style="text-decoration:none">controllers</a>
-      application_controllers.rb
-      <%=add_controllers(@models_hash)%>
-    <a href="#models" style="text-decoration:none">models</a>
-      <%=add_models(@models_hash)%>
-    <a href="#views" style="text-decoration:none">views</a>
-      <%=add_views_folders_and_files(@models_hash)%>
-      index.erb
-      layout.erb
-  <a href="#config/envir" style="text-decoration:none">config</a>
-    environment.rb
-  <a href="#db" style="text-decoration:none">db</a>
-    migrate
-      <%=create_migration_files(@models_hash)%>
-  <a href="#configru" style="text-decoration:none">config.ru</a>
-  <a href="#gemfile" style="text-decoration:none">Gemfile</a>
-  <a href="#rakefile" style="text-decoration:none">Rakefile</a>
+<i class="far fa-folder-open"></i><a href="#controllers" style="text-decoration:none"> app</a>
+  <i class="far fa-folder-open"></i><a href="#controllers" style="text-decoration:none"> controllers</a>
+     <i class="fas fa-file-alt"></i> application_controllers.rb
+    <%=add_controllers(@models_hash)%>
+  <i class="far fa-folder-open"></i><a href="#models" style="text-decoration:none"> models</a>
+    <%=add_models(@models_hash)%>
+  <i class="far fa-folder-open"></i><a href="#views" style="text-decoration:none"> views</a>
+    <%=add_views_folders_and_files(@models_hash)%>
+     <i class='fas fa-file-alt'></i> index.erb
+     <i class='fas fa-file-alt'></i> layout.erb
+<i class='far fa-folder-open'></i><a href="#config/envir" style="text-decoration:none"> config</a>
+   <i class='fas fa-file-alt'></i> environment.rb
+<i class='far fa-folder-open'></i><a href="#db" style="text-decoration:none"> db</a>
+  <i class='far fa-folder-open'></i> migrate
+    <%=create_migration_files(@models_hash)%>
+<i class='fas fa-file-alt'></i><a href="#configru" style="text-decoration:none"> config.ru</a>
+<i class='fas fa-file-alt'></i><a href="#gemfile" style="text-decoration:none"> Gemfile</a>
+<i class='fas fa-file-alt'></i><a href="#rakefile" style="text-decoration:none"> Rakefile</a>
 </code>
 </pre>
 </div><!-- End of left column-->
