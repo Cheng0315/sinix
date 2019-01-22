@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
 
     def add_models_to_project(project, models_hash)
       models_hash.each_value do |model_name|
-        model = Model.create(name: model_name.downcase)
+        model = Model.create(name: convert_to_snake_case(model_name))
         project.models << model
       end
     end
@@ -147,7 +147,7 @@ class ApplicationController < Sinatra::Base
       controller_classes = ""
 
       models_hash.each_with_index do |model, index|
-        controller_classes += "class #{capitalize_model_name_with_s_as_last_char(model[1])}Controller < ApplicationController<br><br>"
+        controller_classes += "class #{split_snake_case_with_s_as_last_char(model[1])}Controller < ApplicationController<br><br>"
         controller_classes += "end<br><br>"
       end
 
@@ -158,7 +158,7 @@ class ApplicationController < Sinatra::Base
       model_classes = ""
 
       models_hash.each_with_index do |model, index|
-        model_classes += "class #{capitalize_model_name(model[1])} < ActiveRecord::Base<br><br>"
+        model_classes += "class #{split_snake_case_and_capitalize_1st_char(model[1])} < ActiveRecord::Base<br><br>"
         model_classes += "end<br><br>"
       end
 
@@ -169,7 +169,7 @@ class ApplicationController < Sinatra::Base
       migration_files = ""
 
       models_hash.each_with_index do |model, index|
-        migration_files += "class Create#{capitalize_model_name_with_s_as_last_char(model[1])} < ActiveRecord::Migration<br>"
+        migration_files += "class Create#{split_snake_case_with_s_as_last_char(model[1])} < ActiveRecord::Migration<br>"
         migration_files += "  def change<br>"
         migration_files += "    create_table :#{table_name(model[1])}s do |t|<br><br>"
         migration_files += "    end<br>"
@@ -183,7 +183,7 @@ class ApplicationController < Sinatra::Base
     def use_controllers(models_hash)
       controllers = ""
       models_hash.each_value do |model_name|
-        controllers += "use #{capitalize_model_name_with_s_as_last_char(model_name)}Controller<br>"
+        controllers += "use #{split_snake_case_with_s_as_last_char(model_name)}Controller<br>"
       end
 
       controllers
@@ -193,11 +193,25 @@ class ApplicationController < Sinatra::Base
     def update_models_name(models_hash)
       models_hash.each do |id, name|
         find_model = Model.find {|m| m.id == id.to_i}
-        find_model.update(name: name.downcase)
+        find_model.update(name: convert_to_snake_case(name))
       end
     end
 
+    def convert_to_snake_case(name)
+      name.split(' ').join("_").downcase
+    end
 
+    def split_snake_case_with_s_as_last_char(name)
+      name.split("_").map(&:capitalize).join('') + "s"
+    end
+
+    def split_snake_case_and_capitalize_1st_char(name)
+      name.split("_").map(&:capitalize).join('')
+    end
+
+    def split_snake_case_join_w_space(name)
+      name.split("_").join(' ')
+    end
 
   end
 end

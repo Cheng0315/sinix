@@ -18,7 +18,7 @@
           <h6>Model(s)</h6>
           <%@project.models.each_with_index do |model, i|%>
             <div class="form-group">
-              <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=model.name%>">
+              <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=split_snake_case_join_w_space(model.name)%>">
             </div>
           <%end%>
 
