@@ -13,17 +13,17 @@
             <input type="hidden" id="hidden" name="_method" value="PATCH">
             <div class="form-row">
               <div class="form-group col-lg-6">
-                <input type="text" name ="user[first_name]" class="form-control" id="first_name" value="<%=@user.first_name%>">
+                <h6>First Name</h6><input type="text" name ="user[first_name]" class="form-control" id="first_name" value="<%=@user.first_name%>">
               </div>
               <div class="form-group col-lg-6">
-                <input type="text" name ="user[last_name]" class="form-control" id="last_name" value="<%=@user.last_name%>">
+                <h6>Last Name</h6><input type="text" name ="user[last_name]" class="form-control" id="last_name" value="<%=@user.last_name%>">
               </div>
             </div>
             <div class="form-group">
-              <input type="text" name ="user[email]" class="form-control" id="email" value="<%=@user.email%>">
+              <h6>Email</h6><input type="text" name ="user[email]" class="form-control" id="email" value="<%=@user.email%>">
             </div>
             <div class="form-group">
-              <input type="password" name ="user[password]" class="form-control" id="password" value="<%=@user.password%>">
+              <h6>Password</h6><input type="password" name ="user[password]" class="form-control" id="password" value="<%=@user.password%>" placeholder="Password">
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary form-control" id="Submit">Submit changes</button>

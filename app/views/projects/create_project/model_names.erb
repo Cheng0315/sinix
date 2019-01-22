@@ -2,17 +2,17 @@
   <div class="row justify-content-center" style="margin-top: -130px;">
     <div class="col-md-6 col-sm-offset-3">
       <div class="form-container form-bg-color" style=" margin-bottom: 50px;">
-        <h3 class="form-group">Please enter the name of your project and the name of your models (in singular form).</h3>
+        <h3 class="form-group">Please enter the name of your project, the name of your models (in singular form), and a description about the project.</h3>
         <!-- form for user to input the name of the project, model(s), and description-->
         <form action="/projects" method="POST">
 
           <div class="form-group">
-            <input type="text" class="form-control" name="project_name" id="name" placeholder="Project Name">
+            <input type="text" class="form-control" name="project_name" id="name" placeholder="Project's Name">
           </div>
           <!-- loop based on number of the user's selection-->
           <%@num_of_models.times do |i|%>
             <div class="form-group">
-              <input type="text" class="form-control" name="models[model_<%=i+1%>_name]" id="model_names" placeholder="Model <%=i+1%> name">
+              <input type="text" class="form-control" name="models[model_<%=i+1%>_name]" id="model_names" placeholder="Model <%=i+1%>'s name">
             </div>
           <%end%>
 

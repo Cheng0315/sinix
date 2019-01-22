@@ -46,12 +46,14 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/profile"><h6><%=current_user.first_name%></h6></a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit"><h6>Edit User Info</h6></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/logout"><h6>Logout</h6></a>
-              </li>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; color: black; border: none;">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit">Edit User Info</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </div>
             </ul>
         </div><!-- Navbar collapse-->
       </div><!-- Container fluid-->
