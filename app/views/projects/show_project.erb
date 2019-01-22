@@ -1,4 +1,4 @@
-<div class="container-fluid show-project-padding">
+<div class="container-fluid show-project-padding" id="top">
 
   <div ><!-- Display delete and edit button if project belongs to user-->
     <%if project_belongs_to_user(params[:id])%>
@@ -142,7 +142,7 @@ require "bundler/gem_tasks"
 task :default => :spec
 
 
-              <a href="#controllers" style="text-decoration:none;" class="controller-style">Back to top</a>
+              <a href="#top" style="text-decoration:none;" class="controller-style">Back to top</a>
           </font>
         </code>
       </pre>
