@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
       @user.projects << @project
       redirect "/projects/#{@project.id}"
     else
-      flash[:message] = "Invalid input(s). Please reselect the number of models you'll be using, click submit, and fill in all the fields."
+      flash[:message] = "Invalid input(s). Please reselect the number of models you'll be using, click continue, and fill in all the fields."
       redirect "/projects/new"
     end
   end
