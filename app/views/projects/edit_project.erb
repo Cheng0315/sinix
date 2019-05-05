@@ -1,36 +1,32 @@
-<div class="container add-margin-top" >
-  <div class="row justify-content-center delete-margin" >
-    <div class="col-md-6 col-md-offset-3">
-      <div class="form-container form-bg-color add-margin-and-width" >
-        <h3 class="form-group text-align-center">Update your project</h3>
-        <!-- Display error message if user input bad charaters or leave empty field-->
-        <% if flash.has?(:message) %>
-          <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
-        <% end %>
-        <!-- Edit project form-->
-        <form action="/projects/<%=@project.id%>" method="POST">
-          <input type="hidden" id="hidden" name="_method" value="PATCH">
+<div class="project-form-container">
+  <div class="project-form-content">
+    <h3 class="form-group text-align-center">Update your project</h3>
+    <!-- Display error message if user input bad charaters or leave empty field-->
+    <% if flash.has?(:message) %>
+      <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
+    <% end %>
+    <!-- Edit project form-->
+    <form action="/projects/<%=@project.id%>" method="POST">
+      <input type="hidden" id="hidden" name="_method" value="PATCH">
 
-          <div class="form-group">
-            <h6>Project's Name</h6><input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
-          </div>
-          <!-- Iterate through the project's models array and display them in the form for edit-->
-          <h6>Model(s)</h6>
-          <%@project.models.each_with_index do |model, i|%>
-            <div class="form-group">
-              <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=split_snake_case_join_w_space(model.name)%>">
-            </div>
-          <%end%>
+      <div class="form-group">
+        <h6>Project's Name</h6><input type="text" class="form-control" name="project_name" id="name" value="<%=@project.name%>">
+      </div>
+      <!-- Iterate through the project's models array and display them in the form for edit-->
+      <h6>Model(s)</h6>
+      <%@project.models.each_with_index do |model, i|%>
+        <div class="form-group">
+          <input type="text" class="form-control" name="models[<%=model.id%>]" id="model_names" value="<%=split_snake_case_join_w_space(model.name)%>">
+        </div>
+      <%end%>
 
-          <div class="form-group">
-            <h6>Description</h6><input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>" maxlength="75">
-          </div>
+      <div class="form-group">
+        <h6>Description</h6><input type="text" class="form-control" name="description" id="description" value="<%=@project.description%>" maxlength="75">
+      </div>
 
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control" id="Continue">Update Project</button>
-          </div>
-        </form>
-      </div><!-- form container-->
-    </div>
-  </div><!-- row -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary form-control" id="Continue">Update Project</button>
+      </div>
+    </form>
+  </div><!-- form container-->
 </div>

@@ -1,39 +1,47 @@
-<div class="container margin">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="form-container form-bg-color">
-        <h2 class="text-align-center">Sign up</h2>
-        <h4 class="text-align-center">Start structuring your next Web Application Project</h4>
-        <!-- Display error message if user input bad charaters or leave empty field-->
-        <% if flash.has?(:message) %>
-          <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
-        <% end %>
+<div class="form-container">
+  <div class="form-content">
+    <h2 class="text-align-center">Sign up</h2>
+    <h4 class="text-align-center">Start structuring your Sinatra web applications</h4>
+    <!-- Display error message if user input bad charaters or leave empty field-->
+    <% if flash.has?(:message) %>
+      <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
+    <% end %>
 
-        <div ><!-- User's sign up form-->
-          <form action="/signup" method="POST">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" name ="user[first_name]" class="form-control" id="first_name" placeholder="First Name">
-              </div>
-              <div class="form-group col-md-6">
-                <input type="text" name ="user[last_name]" class="form-control" id="last_name" placeholder="Last Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" name ="user[email]" class="form-control" id="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="password" name ="user[password]" class="form-control" id="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary form-control" id="Submit">Sign up</button>
-            </div>
-          </form>
+    <div ><!-- User's sign up form-->
+      <form action="/signup" method="POST">
+        <div class="form-row">
+          <div class="form-group col-lg-6">
+            <input type="text" name ="user[first_name]" class="form-control" id="first_name" placeholder="First Name">
+          </div>
+          <div class="form-group col-lg-6">
+            <input type="text" name ="user[last_name]" class="form-control" id="last_name" placeholder="Last Name">
+          </div>
         </div>
-        <div class="text-align-center">
-          <a href="/login">Already have an account? Log In</a>
+        <div class="form-group">
+          <input type="text" name ="user[email]" class="form-control" id="email" placeholder="Email">
         </div>
-      </div><!-- form container-->
+        <div class="form-group">
+          <input type="password" name ="user[password]" class="form-control" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary form-control" id="Submit">Sign up</button>
+        </div>
+      </form>
     </div>
-  </div><!-- row container-->
+    <div class="text-align-center">
+      <a href="/login">Already have an account? Log In</a>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xs-12">
+            <!--Footer Bottom-->
+            <p class="text-align-center">&copy; Copyright 2019 - City of USA.  All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>

@@ -1,31 +1,27 @@
-<div class="container add-margin-top">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-sm-offset-3">
-      <div class="form-container form-bg-color" style=" margin-bottom: 100px;">
-        <h3 class="form-group text-align-center">Please select the number of models you will be using.</h3>
-        <!-- Display error message if user input bad charaters or leave empty field-->
-        <% if flash.has?(:message) %>
-          <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
-        <% end %>
-        <!-- Drop down select for the number of models the user will be using-->
-        <form action="/projects/new/model-names" method="POST">
-          <select name="num_of_models" class="browser-default custom-select form-group">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select><br>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control" id="Continue">Continue</button>
-          </div>
-        </form>
-      </div><!-- form container-->
-    </div>
-  </div><!-- row -->
+<div class="project-form-container">
+  <div class="project-form-content">
+    <h3 class="form-group text-align-center">Please select the number of model(s) you will use for this project.</h3>
+    <!-- Display error message if user input bad charaters or leave empty field-->
+    <% if flash.has?(:message) %>
+      <div style="color:red;" class="text-align-center"><%= flash[:message] %> </div>
+    <% end %>
+    <!-- Drop down select for the number of models the user will be using-->
+    <form action="/projects/new/model-names" method="POST">
+      <select name="num_of_models" class="browser-default custom-select form-group">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select><br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary form-control" id="Continue">Continue</button>
+      </div>
+    </form>
+  </div><!-- form container-->
 </div>
