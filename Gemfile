@@ -10,12 +10,4 @@ gem 'shotgun'
 gem 'bcrypt'
 gem 'tux'
 gem 'rack-flash3'
-
-group :production do
-	gem 'pg'
-end
-
-group :development, :test do
-	gem 'pry'
-	gem 'sqlite3'
-end
+gem 'pg'
