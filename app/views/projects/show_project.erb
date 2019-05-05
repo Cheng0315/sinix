@@ -1,6 +1,6 @@
 <div class="container-fluid show-project-padding" id="top">
 
-  <div ><!-- Display delete and edit button if project belongs to user-->
+  <div class='edit-delete-btns'><!-- Display delete and edit button if project belongs to user-->
     <%if project_belongs_to_user(params[:id])%>
       <form style="display: inline-block;" action="/projects/<%= @project.id %>/delete" method="POST">
         <input type="hidden" value="delete" id="hidden" name="_method">
@@ -12,6 +12,19 @@
     <%end%>
   </div>
 
+  <div class='structures-info'>
+    The structure of your project's folders and files are on the left
+    side of the screen and the codes that goes inside those folders
+    and files are on the middle of the screen. If you are on a medium or small screen device,
+    your project's folders and files are below this message and the codes that goes
+    inside those folders and files start at the 'controllers' header.
+    When creating your project, set up your project's folders
+    and files similar to the ones shown on this page and copy the code on this page and paste them into their appropriate file in your project.
+    E.g. In the application_controller.rb file (under the controllers folder), you would copy and paste the code<br>
+    <div>'class ApplicationController < Sinatra::Base</div>
+    <div>end'.</div>
+    Do the same for all the other files and you're all set to start coding and bring your ideas to life.
+  </div>
 <!-- row that holds the code texts-->
   <div class="row">
 <!-- Display the project in code texts, left column, folders and files-->
@@ -47,7 +60,7 @@
 <div class="col-lg-6 col-lg-offset-2">
   <pre >
     <code>
-<span class="controllers-anchor" id="controllers"></span>
+<span id="controllers"></span>
               controllers
 
 class ApplicationController < Sinatra::Base
@@ -56,12 +69,12 @@ end
 
 <%=display_controller_classes(@models_hash)%>
 
-<span class="anchor" id="models"></span>
+<span id="models"></span>
               models
 
 <%=display_model_classes(@models_hash)%>
 
-<span class="anchor" id="views"></span>
+<span id="views"></span>
               views
 
 add your html/erb code in your erb files inside your views folder
@@ -81,7 +94,7 @@ layout.erb
   &lt;/body&gt;
 &lt;/html&gt;
   </font></pre>
-<span class="anchor" id="config/envir"></span>
+<span id="config/envir"></span>
               config/environment.rb
 
 require 'bundler/setup'
@@ -95,11 +108,11 @@ ActiveRecord::Base.establish_connection(
 require_all 'app'
 
 
-<span class="anchor" id="db"></span>
+<span id="db"></span>
               db/migrate
 
 <%=display_migration_files(@models_hash)%>
-<span class="anchor" id="configru"></span>
+<span id="configru"></span>
               config.ru
 
 require './config/environment'
@@ -113,7 +126,7 @@ use Rack::MethodOverride
 run ApplicationController
 
 
-<span class="anchor" id="gemfile"></span>
+<span id="gemfile"></span>
               Gemfile
 
 source "https://rubygems.org"
@@ -132,7 +145,7 @@ gem 'tux'
 gem 'rack-flash3'
 
 
-<span class="anchor" id="rakefile"></span>
+<span id="rakefile"></span>
               Rakefile
 
 require_relative './config/environment'
