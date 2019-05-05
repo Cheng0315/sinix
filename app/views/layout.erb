@@ -51,9 +51,10 @@
               </li>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; color: black; border: none;">
+                  <h6 class='account-dropdown'>Account</h6>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit">Edit User Info</a>
+                  <a class="dropdown-item" href="/users/<%=current_user.first_name%>-<%=current_user.last_name%>/edit">Update My Info</a>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </div>

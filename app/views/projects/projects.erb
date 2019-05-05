@@ -1,7 +1,7 @@
 <div class="container add-margin-top list-container-bg">
 
-  <div>
-    <h1 class="text-align-center">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
+  <div class='list-projects-content'>
+    <h1 class="welcome-header">Welcome <%=capitalize_model_name(@user.first_name)%></h1>
     <!-- Display list of projects-->
     <div class="list-group">
       <h2 class="text-align-center">Projects</h2>
@@ -13,11 +13,13 @@
             <div>
               <h5 style="display: inline-block"><a href="/projects/<%=project.id%>" style="text-decoration:none"><%=project.name%></a></h5>
             </div>
-            <div>
-              <p class="float-right">Date created: <%=project.date_created%></p>
-            </div>
+            <div class='project-info'>
               <div >
-              <p><%=project.description%></p>
+                <p><%=project.description%></p>
+              </div>
+              <div>
+                <p >Date created: <%=project.date_created%></p>
+              </div>
             </div>
           </div>
         </li>
