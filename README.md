@@ -1,14 +1,11 @@
 # Sinix
 
-Welcome! For this project, I created an application that generate the skeleton of a web application
-to help new developers structure their web application.
+Hello! Sinix is Sinatra web application that generates the structures of a Sinatra web application. Read below for installation process.
 
 ## Installation
 
-After you cloned the repository, cd into project's root directory.
-Type 'bundle install' in the terminal and press enter.
-After the installations, type 'shotgun' in the terminal and press enter.
-Copy the server in the terminal and paste it into your browser address.
+To install the application, cloned this repository and cd into the project's root directory.
+Run 'bundle install' and 'shotgun'. Then copy the url in the terminal and paste it into your browser's address bar.
 
 ## Contributing
 
